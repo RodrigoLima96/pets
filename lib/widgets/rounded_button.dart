@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pets/constants.dart';
 
 class RoundedButton extends StatelessWidget {
   final String text;
@@ -18,17 +19,19 @@ class RoundedButton extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width * 0.8,
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: kDefaultPadding - 10),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(29),
         child: TextButton(
           style: ButtonStyle(
-            padding: MaterialStateProperty.resolveWith(
-                (states) => const EdgeInsets.symmetric(vertical: 20)),
+            padding: MaterialStateProperty.resolveWith((states) =>
+                const EdgeInsets.symmetric(vertical: kDefaultPadding)),
             backgroundColor:
                 MaterialStateProperty.resolveWith((states) => color),
           ),
-          onPressed: () {},
+          onPressed: () {
+            press();
+          },
           child: Text(
             text,
             style: TextStyle(

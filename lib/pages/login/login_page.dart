@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pets/constants.dart';
-import 'package:pets/pages/welcome/widgets/body.dart';
+import 'package:pets/pages/login/widgets/body.dart';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
