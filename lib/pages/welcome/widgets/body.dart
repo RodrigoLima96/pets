@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pets/constants.dart';
+import 'package:pets/pages/signup/sign_up_page.dart';
 import 'package:pets/widgets/rounded_button.dart';
 import '../../login/login_page.dart';
 
@@ -14,6 +15,11 @@ class Body extends StatelessWidget {
     loginPage() {
       Navigator.push(
           context, MaterialPageRoute(builder: (_) => const LoginPage()));
+    }
+
+    signUpPage() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => const SignUpPage()));
     }
 
     return SizedBox(
@@ -50,12 +56,14 @@ class Body extends StatelessWidget {
                 press: () => loginPage(),
                 color: kPrimaryColor,
                 textColor: kWhite,
+                size: size,
               ),
               RoundedButton(
                 text: 'SIGNUP',
-                press: () {},
+                press: () => signUpPage(),
                 color: kPrimaryColor,
                 textColor: Colors.black,
+                size: size,
               ),
               SizedBox(height: size.height * 0.2)
             ],

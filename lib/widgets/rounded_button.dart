@@ -5,18 +5,19 @@ class RoundedButton extends StatelessWidget {
   final String text;
   final Function press;
   final Color color, textColor;
+  final Size size;
 
   const RoundedButton(
       {Key? key,
       required this.text,
       required this.press,
       required this.color,
-      required this.textColor})
+      required this.textColor,
+      required this.size})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width * 0.8,
       margin: const EdgeInsets.symmetric(vertical: kDefaultPadding - 10),

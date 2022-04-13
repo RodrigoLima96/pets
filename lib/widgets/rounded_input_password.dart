@@ -4,7 +4,11 @@ import 'package:pets/constants.dart';
 import 'package:pets/widgets/text_field_container.dart';
 
 class RoundedInputPassword extends StatelessWidget {
-  const RoundedInputPassword({Key? key}) : super(key: key);
+  final bool confirmPassword;
+  const RoundedInputPassword({
+    Key? key,
+    required this.confirmPassword,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +19,19 @@ class RoundedInputPassword extends StatelessWidget {
           style: const TextStyle(color: kBlack),
           obscureText: true,
           decoration: InputDecoration(
-            hintText: 'Password',
+            hintText: !confirmPassword ? 'Password' : 'Confirm Password',
             hintStyle: const TextStyle(color: kBlack),
             icon: SvgPicture.asset(
               'assets/icons/lock.svg',
               color: kPrimaryColor,
             ),
-            suffixIcon: SvgPicture.asset(
-              height: 5,
-              'assets/icons/eye.svg',
-              color: kPrimaryColor,
-            ),
+            suffixIcon: !confirmPassword
+                ? SvgPicture.asset(
+                    height: 5,
+                    'assets/icons/eye.svg',
+                    color: kPrimaryColor,
+                  )
+                : null,
             suffixIconConstraints: const BoxConstraints(
               minHeight: 27,
               minWidth: 27,
