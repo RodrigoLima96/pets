@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pets/constants.dart';
-import 'package:pets/pages/welcome/widgets/body.dart';
+import 'package:pets/src/shared/utils/constants.dart';
+import 'package:pets/src/modules/welcome/widgets/welcome_body.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: kBlack,
-      body: Body(),
+      body: WelcomeBody(),
     );
   }
 }

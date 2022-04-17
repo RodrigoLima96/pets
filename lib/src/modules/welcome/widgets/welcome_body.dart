@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:pets/constants.dart';
-import 'package:pets/pages/signup/sign_up_page.dart';
-import 'package:pets/widgets/rounded_button.dart';
-import '../../login/login_page.dart';
+import 'package:pets/src/shared/utils/constants.dart';
+import 'package:pets/src/modules/auth/login/login_page.dart';
+import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
+import 'package:pets/src/shared/widgets/rounded_button.dart';
 
-class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+class WelcomeBody extends StatelessWidget {
+  const WelcomeBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     loginPage() {
       Navigator.push(
           context, MaterialPageRoute(builder: (_) => const LoginPage()));
@@ -21,6 +19,8 @@ class Body extends StatelessWidget {
       Navigator.push(
           context, MaterialPageRoute(builder: (_) => const SignUpPage()));
     }
+
+    Size size = MediaQuery.of(context).size;
 
     return SizedBox(
       height: size.height,
