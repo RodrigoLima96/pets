@@ -6,6 +6,8 @@ class RoundedInputText extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final Widget icon;
+  final TextInputType textInputType;
+
   final FormFieldValidator<String> validator;
 
   const RoundedInputText({
@@ -14,6 +16,7 @@ class RoundedInputText extends StatelessWidget {
     required this.icon,
     required this.controller,
     required this.validator,
+    required this.textInputType,
   }) : super(key: key);
 
   @override
@@ -29,6 +32,7 @@ class RoundedInputText extends StatelessWidget {
           icon: icon,
           border: InputBorder.none,
         ),
+        keyboardType: textInputType,
       ),
     );
   }

@@ -82,6 +82,7 @@ class _LoginBodyState extends State<LoginBody> {
                   'assets/icons/email.svg',
                   color: kPrimaryColor,
                 ),
+                textInputType: TextInputType.emailAddress,
                 validator: (value) {
                   return _validadorController.emailValidator(value!);
                 },

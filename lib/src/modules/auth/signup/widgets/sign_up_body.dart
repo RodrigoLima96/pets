@@ -79,6 +79,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   'assets/icons/person.svg',
                   color: kPrimaryColor,
                 ),
+                textInputType: TextInputType.text,
                 validator: (value) {
                   return validadorController.nameValidator(value!);
                 },
@@ -90,6 +91,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   'assets/icons/email.svg',
                   color: kPrimaryColor,
                 ),
+                textInputType: TextInputType.emailAddress,
                 validator: (value) {
                   return validadorController.emailValidator(value!);
                 },
