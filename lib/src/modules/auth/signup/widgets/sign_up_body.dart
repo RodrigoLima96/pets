@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pets/src/modules/auth/signup/controller/sign_up_validador_controller.dart';
 import 'package:pets/src/modules/auth/signup/controller/sign_up_controller.dart';
 import 'package:pets/src/modules/auth/signup/widgets/sign_up_button.dart';
 import 'package:pets/src/modules/home/home_page.dart';
@@ -26,8 +27,8 @@ class _SignUpBodyState extends State<SignUpBody> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  final validadorController = SignUpController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final validadorController = SignUpValidatorController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -35,9 +36,9 @@ class _SignUpBodyState extends State<SignUpBody> {
     final controller = context.read<SignUpController>();
 
     controller.addListener(() {
-      if (controller.state == AuthState.error) {
-        showSnackBar(context, controller.errorFirebase);
-      } else if (controller.state == AuthState.success) {
+      if (controller.state == SignUpState.error) {
+        showSnackBar(context, controller.signUpErrorFirebase);
+      } else if (controller.state == SignUpState.success) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -55,7 +56,6 @@ class _SignUpBodyState extends State<SignUpBody> {
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
-    validadorController.dispose();
   }
 
   @override
@@ -66,7 +66,7 @@ class _SignUpBodyState extends State<SignUpBody> {
       child: SizedBox(
         width: double.infinity,
         child: Form(
-          key: formKey,
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -117,7 +117,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                 nameController: nameController,
                 confirmPasswordController: confirmPasswordController,
                 size: size,
-                formKey: formKey,
+                formKey: _formKey,
               ),
               SizedBox(height: size.height * 0.05),
               OrDivider(size: size),

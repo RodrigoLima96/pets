@@ -25,7 +25,7 @@ class SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<SignUpController>();
-    return controller.state == AuthState.loading
+    return controller.state == SignUpState.loading
         ? SizedBox(
             height: size.height * 0.09,
             child: const Center(
@@ -42,7 +42,6 @@ class SignUpButton extends StatelessWidget {
                     email: emailController.text,
                     password: passwordController.text,
                     name: nameController.text,
-                    confirmPassword: confirmPasswordController.text,
                   );
                 }
               },
