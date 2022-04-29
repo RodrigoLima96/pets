@@ -3,10 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pets/src/modules/auth/login/controller/login_controller.dart';
 import 'package:pets/src/modules/auth/login/controller/login_validator_controller.dart';
 import 'package:pets/src/modules/auth/login/widgets/login_button.dart';
-import 'package:pets/src/modules/home/home_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/modules/auth/login/widgets/already_have_an_account_check.dart';
-import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:pets/src/shared/widgets/logo.dart';
 import 'package:pets/src/shared/widgets/rounded_input_password.dart';
@@ -36,12 +34,8 @@ class _LoginBodyState extends State<LoginBody> {
         if (controller.state == LoginState.error) {
           showSnackBar(context, controller.loginErrorFirebase);
         } else if (controller.state == LoginState.success) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-            (Route<dynamic> route) => false,
-          );
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('/home', (route) => false);
         }
       },
     );
@@ -55,8 +49,7 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   signUpPage() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const SignUpPage()));
+    Navigator.of(context).pushNamed('/sign_up');
   }
 
   @override

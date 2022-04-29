@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pets/src/modules/auth/login/login_page.dart';
+import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
 import 'package:provider/provider.dart';
 import 'modules/auth/login/controller/login_controller.dart';
 import 'modules/auth/signup/controller/sign_up_controller.dart';
@@ -26,9 +28,13 @@ class MyApp extends StatelessWidget {
         title: 'Pets App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
-        home: FirebaseAuth.instance.currentUser == null
-            ? const WelcomePage()
-            : const HomePage(),
+        initialRoute: FirebaseAuth.instance.currentUser == null ? '/' : '/home',
+        routes: {
+          '/': (context) => const WelcomePage(),
+          '/login': (context) => const LoginPage(),
+          '/sign_up': (context) => const SignUpPage(),
+          '/home': (context) => const HomePage(),
+        },
       ),
     );
   }

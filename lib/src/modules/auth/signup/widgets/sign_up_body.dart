@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pets/src/modules/auth/signup/controller/sign_up_validador_controller.dart';
 import 'package:pets/src/modules/auth/signup/controller/sign_up_controller.dart';
 import 'package:pets/src/modules/auth/signup/widgets/sign_up_button.dart';
-import 'package:pets/src/modules/home/home_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/modules/auth/signup/widgets/or_divider.dart';
 import 'package:pets/src/modules/auth/signup/widgets/social_icon.dart';
@@ -39,12 +38,8 @@ class _SignUpBodyState extends State<SignUpBody> {
       if (controller.state == SignUpState.error) {
         showSnackBar(context, controller.signUpErrorFirebase);
       } else if (controller.state == SignUpState.success) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (_) => const HomePage(),
-          ),
-        );
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/home', (route) => false);
       }
     });
   }

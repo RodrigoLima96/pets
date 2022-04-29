@@ -18,10 +18,7 @@ class Logo extends StatelessWidget {
         SizedBox(height: size.height * 0.02),
         Text(
           login ? 'LOGIN' : 'SIGN UP',
-          style: const TextStyle(
-            color: kWhite,
-            fontWeight: FontWeight.bold,
-          ),
+          style: textStyle,
         ),
       ],
     );

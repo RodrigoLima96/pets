@@ -42,8 +42,8 @@ class _RoundedInputPasswordState extends State<RoundedInputPassword> {
             ),
             suffixIcon: IconButton(
               icon: SvgPicture.asset(
-                height: 25,
                 'assets/icons/eye.svg',
+                height: 25,
                 color: kPrimaryColor,
               ),
               onPressed: () {

@@ -24,46 +24,31 @@ class _FilterPostsOptionsState extends State<FilterPostsOptions> {
               unselectedBackgroundColor: kBlack,
               borderColor: kPrimaryColor,
               borderWidth: 2,
-              labelStyle: const TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.bold),
-              tabs: const [
+              labelStyle: textStyle.copyWith(color: Colors.white),
+              tabs: [
                 Tab(
                   child: Text(
                     'ALL',
-                    style: TextStyle(
-                      color: kWhite,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: textStyle.copyWith(fontSize: 15),
                   ),
                 ),
                 Tab(
                   child: Text(
                     'DOGS',
-                    style: TextStyle(
-                      color: kWhite,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: textStyle.copyWith(fontSize: 15),
                   ),
                 ),
                 Tab(
                   child: Text(
                     'CATS',
-                    style: TextStyle(
-                      color: kWhite,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: textStyle.copyWith(fontSize: 15),
                   ),
                 ),
                 Tab(
                   child: Text(
                     'BIRDS',
-                    style: TextStyle(
-                      color: kWhite,
+                    style: textStyle.copyWith(
                       fontSize: 15,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

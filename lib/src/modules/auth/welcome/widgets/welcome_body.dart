@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pets/src/shared/utils/constants.dart';
-import 'package:pets/src/modules/auth/login/login_page.dart';
-import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
 
 class WelcomeBody extends StatelessWidget {
@@ -11,13 +9,11 @@ class WelcomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     loginPage() {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (_) => const LoginPage()));
+      Navigator.of(context).pushNamed('/login');
     }
 
     signUpPage() {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (_) => const SignUpPage()));
+      Navigator.of(context).pushNamed('/sign_up');
     }
 
     Size size = MediaQuery.of(context).size;
@@ -43,13 +39,7 @@ class WelcomeBody extends StatelessWidget {
                 width: size.width * 0.2,
               ),
               SizedBox(height: size.height * 0.02),
-              const Text(
-                'WELCOME TO PETS',
-                style: TextStyle(
-                  color: kWhite,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              const Text('WELCOME TO PETS', style: textStyle),
               SizedBox(height: size.height * 0.1),
               RoundedButton(
                 text: 'LOGIN',

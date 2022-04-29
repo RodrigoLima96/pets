@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/shared/utils/constants.dart';
 
 class AlreadyHaveAnAccountCheck extends StatelessWidget {
   final Function press;
@@ -17,7 +18,7 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
         GestureDetector(
           child: const Text(
             'Sign Up',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: textStyle,
           ),
           onTap: () {
             press();
