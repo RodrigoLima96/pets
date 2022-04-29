@@ -1,17 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/home/widgets/filter_posts_options.dart';
-import 'package:pets/src/modules/home/widgets/header_home.dart';
-import 'package:pets/src/modules/home/widgets/post_card.dart';
+import 'package:pets/src/modules/feed/widgets/filter_posts_options.dart';
+import 'package:pets/src/modules/feed/widgets/header_feed.dart';
+import 'package:pets/src/modules/feed/widgets/post_card.dart';
 
-class HomeBody extends StatefulWidget {
-  const HomeBody({Key? key}) : super(key: key);
+class FeedBody extends StatefulWidget {
+  const FeedBody({Key? key}) : super(key: key);
 
   @override
-  State<HomeBody> createState() => _HomeBodyState();
+  State<FeedBody> createState() => _FeedBodyState();
 }
 
-class _HomeBodyState extends State<HomeBody> {
+class _FeedBodyState extends State<FeedBody> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,7 +23,7 @@ class _HomeBodyState extends State<HomeBody> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const HeaderHome(),
+            const HeaderFeed(),
             SizedBox(
               height: size.height * 0.07,
             ),

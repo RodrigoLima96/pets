@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
-class HeaderHome extends StatelessWidget {
-  const HeaderHome({Key? key}) : super(key: key);
+class HeaderFeed extends StatelessWidget {
+  const HeaderFeed({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HeaderHome extends StatelessWidget {
       child: Row(
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
                 'Hi! Rodrigo',
