@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/shared/models/post.dart' as model;
 import 'package:pets/src/shared/utils/constants.dart';
 
 class PostCard extends StatelessWidget {
   final Size size;
-  const PostCard({Key? key, required this.size}) : super(key: key);
+  final model.Post post;
+  const PostCard({Key? key, required this.size, required this.post})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +19,19 @@ class PostCard extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    'Mona',
+                    post.pet.petName,
                     style: textStyle,
                   ),
                   Text(
-                    '3 days',
+                    '${post.days.toString()} days',
                     style: textStyle,
                   ),
                 ],
               ),
-              const Text(
-                '\$50,00',
+              Text(
+                '\$ ${post.price.toString()}',
                 style: textStyle,
               ),
             ],
@@ -39,7 +42,7 @@ class PostCard extends StatelessWidget {
           width: double.infinity,
           margin: const EdgeInsets.symmetric(vertical: 5),
           child: Image.network(
-            'https://images.unsplash.com/photo-1554456854-55a089fd4cb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+            post.pet.photoUrl,
             fit: BoxFit.cover,
           ),
         ),
@@ -47,22 +50,23 @@ class PostCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
-                '4 Years',
+                '${post.days.toString()} days',
                 style: textStyle,
               ),
               Text(
-                '77 Pounds',
+                '${post.pet.weight.toString()} Pounds',
                 style: textStyle,
               ),
               Text(
-                'Female',
+                post.pet.gender,
                 style: textStyle,
               ),
             ],
           ),
         ),
+        SizedBox(height: size.height * 0.05),
       ],
     );
   }

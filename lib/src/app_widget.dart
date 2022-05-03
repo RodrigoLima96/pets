@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/auth/login/login_page.dart';
 import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
+import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
 import 'package:provider/provider.dart';
 import 'modules/auth/login/controller/login_controller.dart';
 import 'modules/auth/signup/controller/sign_up_controller.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         Provider(create: (_) => LoginService()),
         ChangeNotifierProvider(
             create: (context) => LoginController(context.read())),
+        ChangeNotifierProvider(create: (context) => FeedController()),
       ],
       child: MaterialApp(
         title: 'Pets App',
