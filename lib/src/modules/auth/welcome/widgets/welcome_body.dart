@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
 
@@ -8,14 +10,6 @@ class WelcomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    loginPage() {
-      Navigator.of(context).pushNamed('/login');
-    }
-
-    signUpPage() {
-      Navigator.of(context).pushNamed('/sign_up');
-    }
-
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
@@ -43,14 +37,14 @@ class WelcomeBody extends StatelessWidget {
               SizedBox(height: size.height * 0.1),
               RoundedButton(
                 text: 'LOGIN',
-                press: () => loginPage(),
+                press: () => context.pushNamed(AppPage.login.toName),
                 color: kPrimaryColor,
                 textColor: kWhite,
                 size: size,
               ),
               RoundedButton(
                 text: 'SIGNUP',
-                press: () => signUpPage(),
+                press: () => context.pushNamed(AppPage.singUp.toName),
                 color: kPrimaryColor,
                 textColor: Colors.black,
                 size: size,

@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -13,7 +15,7 @@ class ProfilePage extends StatelessWidget {
         child: TextButton(
           onPressed: () {
             FirebaseAuth.instance.signOut();
-            Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+            context.goNamed(AppPage.welcome.toName);
           },
           child: const Text('SAIR'),
         ),

@@ -10,15 +10,42 @@ class FeedController extends ChangeNotifier {
   List<model.Post> posts = [];
 
   FeedController() {
-    getPosts();
+    getPosts(0);
   }
 
-  Future<List<model.Post>> getPosts() async {
+  Future<List<model.Post>> getPosts(int type) async {
     state = FeedState.idle;
     notifyListeners();
+    QuerySnapshot snap;
 
     try {
-      var snap = await _firestore.collection('posts').get();
+      switch (type) {
+        case 0:
+          snap = await _firestore.collection('posts').get();
+          break;
+        case 1:
+          snap = await _firestore
+              .collection('posts')
+              .where('type', isEqualTo: 'dog')
+              .get();
+          break;
+        case 2:
+          snap = await _firestore
+              .collection('posts')
+              .where('type', isEqualTo: 'cat')
+              .get();
+          break;
+        case 3:
+          snap = await _firestore
+              .collection('posts')
+              .where('type', isEqualTo: 'bird')
+              .get();
+          break;
+
+        default:
+          snap = await _firestore.collection('posts').get();
+      }
+      posts = [];
       for (var post in snap.docs) {
         posts.add(model.Post.fromFirestore(post));
       }

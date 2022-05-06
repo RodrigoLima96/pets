@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/auth/login/controller/login_controller.dart';
 import 'package:pets/src/modules/auth/login/controller/login_validator_controller.dart';
 import 'package:pets/src/modules/auth/login/widgets/login_button.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/modules/auth/login/widgets/already_have_an_account_check.dart';
 import 'package:pets/src/shared/utils/methods.dart';
@@ -34,8 +36,7 @@ class _LoginBodyState extends State<LoginBody> {
         if (controller.state == LoginState.error) {
           showSnackBar(context, controller.loginErrorFirebase);
         } else if (controller.state == LoginState.success) {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil('/home', (route) => false);
+          context.goNamed(AppPage.home.toName);
         }
       },
     );
@@ -46,10 +47,6 @@ class _LoginBodyState extends State<LoginBody> {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-  }
-
-  signUpPage() {
-    Navigator.of(context).pushNamed('/sign_up');
   }
 
   @override
@@ -95,7 +92,8 @@ class _LoginBodyState extends State<LoginBody> {
                 password: _passwordController,
               ),
               SizedBox(height: size.height * 0.25),
-              AlreadyHaveAnAccountCheck(press: () => signUpPage()),
+              AlreadyHaveAnAccountCheck(
+                  press: () => context.pushNamed(AppPage.singUp.toName)),
             ],
           ),
         ),
