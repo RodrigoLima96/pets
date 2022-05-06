@@ -7,7 +7,6 @@ enum FeedState { idle, loading, success, error }
 class FeedController extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   var state = FeedState.idle;
-  String response = 'Error';
   List<model.Post> posts = [];
 
   FeedController() {
@@ -30,7 +29,6 @@ class FeedController extends ChangeNotifier {
       state = FeedState.error;
       notifyListeners();
     }
-
     return posts;
   }
 }

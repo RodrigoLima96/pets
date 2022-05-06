@@ -25,13 +25,15 @@ class PostCard extends StatelessWidget {
                     style: textStyle,
                   ),
                   Text(
-                    '${post.days.toString()} days',
+                    post.days > 1
+                        ? '${post.days.toString()} days'
+                        : '${post.days.toString()} day',
                     style: textStyle,
                   ),
                 ],
               ),
               Text(
-                '\$ ${post.price.toString()}',
+                price.format(post.price),
                 style: textStyle,
               ),
             ],
@@ -52,7 +54,7 @@ class PostCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${post.days.toString()} days',
+                date.format(post.datePublished),
                 style: textStyle,
               ),
               Text(
