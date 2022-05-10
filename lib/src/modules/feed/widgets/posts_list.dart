@@ -15,6 +15,27 @@ class PostsList extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = context.watch<FeedController>();
 
+    if (controller.state == FeedState.loading) {
+      return SizedBox(
+          height: size.height * 0.5,
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ));
+    } else if (controller.state == FeedState.error) {
+      return SizedBox(
+          height: size.height * 0.5,
+          child: const Center(
+            child: Text('Error'),
+          ));
+    } else if (controller.posts.isEmpty) {
+      return SizedBox(
+        height: size.height * 0.5,
+        child: const Center(
+            child: Text(
+          'No pets yet',
+        )),
+      );
+    }
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,

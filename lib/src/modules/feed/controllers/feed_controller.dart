@@ -14,7 +14,7 @@ class FeedController extends ChangeNotifier {
   }
 
   Future<List<model.Post>> getPosts(int type) async {
-    state = FeedState.idle;
+    state = FeedState.loading;
     notifyListeners();
     QuerySnapshot snap;
 
@@ -56,6 +56,8 @@ class FeedController extends ChangeNotifier {
       state = FeedState.error;
       notifyListeners();
     }
+
+    state = FeedState.idle;
     return posts;
   }
 }
