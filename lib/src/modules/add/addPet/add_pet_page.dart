@@ -34,6 +34,6 @@ class _AddPetPageState extends State<AddPetPage> {
         ),
         body: controller.image == null
             ? const AddPhotoButton()
-            : const AddPetBody());
+            : AddPetBody(image: controller.image!));
   }
 }

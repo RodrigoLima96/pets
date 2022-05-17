@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/add/widgets/add_pet_button.dart';
+import 'package:pets/src/modules/add/widgets/go_add_pet.dart';
 
 class AddBody extends StatelessWidget {
   const AddBody({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class AddBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: const [
-            AddPetButton(),
+            GoAddPet(),
           ],
         ),
       ),

@@ -4,7 +4,7 @@ import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
 import 'package:pets/src/routes/app_router.dart';
 import 'package:provider/provider.dart';
 import 'modules/auth/login/controller/login_controller.dart';
-import 'modules/auth/signup/controller/sign_up_controller.dart';
+import 'modules/auth/signup/controllers/sign_up_controller.dart';
 import 'shared/services/auth/login_service.dart';
 import 'shared/services/auth/sign_up_service.dart';
 

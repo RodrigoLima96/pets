@@ -1,21 +1,40 @@
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:pets/src/modules/add/addPet/widgets/add_pet_button.dart';
 import 'package:pets/src/modules/auth/login/widgets/input_text.dart';
 import 'package:pets/src/modules/add/addPet/widgets/pet_photo.dart';
 import 'package:pets/src/modules/auth/login/widgets/select_input_text.dart';
 import 'package:pets/src/shared/utils/constants.dart';
-import 'package:pets/src/shared/widgets/rounded_button.dart';
-import 'package:provider/provider.dart';
 
-import '../../controllers/add_controller.dart';
+class AddPetBody extends StatefulWidget {
+  final Uint8List image;
 
-class AddPetBody extends StatelessWidget {
-  const AddPetBody({Key? key}) : super(key: key);
+  const AddPetBody({Key? key, required this.image}) : super(key: key);
+
+  @override
+  State<AddPetBody> createState() => _AddPetBodyState();
+}
+
+class _AddPetBodyState extends State<AddPetBody> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController typeController = TextEditingController();
+  final TextEditingController genderController = TextEditingController();
+  final TextEditingController weightController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    typeController.dispose();
+    genderController.dispose();
+    weightController.dispose();
+    ageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final TextEditingController nameController = TextEditingController();
-    final image = context.watch<AddController>().image;
 
     return SingleChildScrollView(
       child: Container(
@@ -23,7 +42,7 @@ class AddPetBody extends StatelessWidget {
         padding: EdgeInsets.only(top: size.height * 0.06),
         child: Column(
           children: [
-            PetPhoto(size: size, photo: image!),
+            PetPhoto(size: size, photo: widget.image),
             const SizedBox(height: 20),
             SizedBox(
               width: size.width * 0.9,
@@ -35,12 +54,20 @@ class AddPetBody extends StatelessWidget {
             const SizedBox(height: 10),
             SizedBox(
               width: size.width * 0.9,
-              child: SelectInputText(labelText: 'Type', items: items),
+              child: SelectInputText(
+                labelText: 'Type',
+                items: typeItems,
+                controller: typeController,
+              ),
             ),
             const SizedBox(height: 10),
             SizedBox(
               width: size.width * 0.9,
-              child: SelectInputText(labelText: 'Gender', items: items),
+              child: SelectInputText(
+                labelText: 'Gender',
+                items: genderItems,
+                controller: genderController,
+              ),
             ),
             const SizedBox(height: 10),
             SizedBox(
@@ -50,23 +77,34 @@ class AddPetBody extends StatelessWidget {
                   SizedBox(
                     height: 150,
                     width: 150,
-                    child: SelectInputText(labelText: 'Weight', items: items),
+                    child: SelectInputText(
+                      labelText: 'Weight',
+                      items: weightItems,
+                      controller: weightController,
+                    ),
                   ),
                   const Spacer(),
                   SizedBox(
                     height: 150,
                     width: 150,
-                    child: SelectInputText(labelText: 'Age', items: items),
+                    child: SelectInputText(
+                      labelText: 'Age',
+                      items: ageItems,
+                      controller: ageController,
+                    ),
                   ),
                 ],
               ),
             ),
-            RoundedButton(
-                text: 'ADD',
-                press: () {},
-                color: kPrimaryColor,
-                textColor: kWhite,
-                size: size),
+            AddPetButton(
+              size: size,
+              image: widget.image,
+              nameController: nameController,
+              typeController: typeController,
+              genderController: genderController,
+              weightController: weightController,
+              ageController: ageController,
+            ),
           ],
         ),
       ),

@@ -52,6 +52,8 @@ class Post {
         weight: map['weight']?.toDouble() ?? 0.0,
         age: map['age']?.toInt() ?? 0,
         gender: map['gender'] ?? '',
+        petId: map['petId'] ?? '',
+        uid: map['uid'] ?? '',
       ),
       description: map['description'] ?? '',
       datePublished: DateTime.fromMillisecondsSinceEpoch(

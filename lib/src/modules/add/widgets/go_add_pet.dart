@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
-class AddPetButton extends StatelessWidget {
-  const AddPetButton({Key? key}) : super(key: key);
+class GoAddPet extends StatelessWidget {
+  const GoAddPet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

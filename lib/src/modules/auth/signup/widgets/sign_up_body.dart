@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pets/src/modules/auth/signup/controller/sign_up_validador_controller.dart';
-import 'package:pets/src/modules/auth/signup/controller/sign_up_controller.dart';
+import 'package:pets/src/modules/auth/signup/controllers/sign_up_validador_controller.dart';
+import 'package:pets/src/modules/auth/signup/controllers/sign_up_controller.dart';
 import 'package:pets/src/modules/auth/signup/widgets/sign_up_button.dart';
 import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';

@@ -3,11 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Pet {
   final String petName;
+  final String petId;
   final String type;
   final String photoUrl;
   final double weight;
   final int age;
   final String gender;
+  final String uid;
 
   Pet({
     required this.petName,
@@ -16,15 +18,20 @@ class Pet {
     required this.weight,
     required this.age,
     required this.gender,
+    required this.petId,
+    required this.uid,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'petName': petName,
       'type': type,
+      'photoUrl': photoUrl,
       'weight': weight,
       'age': age,
       'gender': gender,
+      'petId': petId,
+      'uid': uid,
     };
   }
 
@@ -38,6 +45,8 @@ class Pet {
       weight: map['weight']?.toDouble() ?? 0.0,
       age: map['age']?.toInt() ?? 0,
       gender: map['gender'] ?? '',
+      petId: map['petId'] ?? '',
+      uid: map['uid'] ?? '',
     );
   }
 
