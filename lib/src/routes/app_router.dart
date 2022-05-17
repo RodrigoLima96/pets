@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pets/src/modules/add/addPet/add_pet_page.dart';
 import 'package:pets/src/modules/auth/login/login_page.dart';
 import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
 import 'package:pets/src/modules/auth/welcome/welcome_page.dart';
@@ -12,7 +13,7 @@ class AppRouter {
   final _router = GoRouter(
     initialLocation: FirebaseAuth.instance.currentUser == null
         ? AppPage.welcome.toPath
-        : AppPage.home.toPath,
+        : AppPage.addPet.toPath,
     routes: <GoRoute>[
       GoRoute(
         path: AppPage.home.toPath,
@@ -33,6 +34,11 @@ class AppRouter {
         path: AppPage.singUp.toPath,
         name: AppPage.singUp.toName,
         builder: (context, state) => const SignUpPage(),
+      ),
+      GoRoute(
+        path: AppPage.addPet.toPath,
+        name: AppPage.addPet.toName,
+        builder: (context, state) => const AddPetPage(),
       ),
     ],
   );
