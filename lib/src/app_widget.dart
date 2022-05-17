@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/modules/add/controllers/add_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
 import 'package:pets/src/routes/app_router.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => LoginController(context.read())),
         ChangeNotifierProvider(create: (context) => FeedController()),
+        ChangeNotifierProvider(create: (context) => AddController()),
       ],
       child: MaterialApp.router(
         title: 'Pets App',

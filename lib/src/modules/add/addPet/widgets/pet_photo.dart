@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:typed_data';
 
 class PetPhoto extends StatelessWidget {
   final Size size;
-  final String photo;
+  final Uint8List photo;
   const PetPhoto({Key? key, required this.size, required this.photo})
       : super(key: key);
 
@@ -16,12 +17,15 @@ class PetPhoto extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
-        child: Image.network(
-          photo,
-          fit: BoxFit.cover,
-        ),
-      ),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: MemoryImage(photo),
+                fit: BoxFit.fill,
+              ),
+            ),
+          )),
     );
   }
 }
