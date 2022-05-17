@@ -11,3 +11,18 @@ const TextStyle textStyle = TextStyle(
 );
 NumberFormat price = NumberFormat.currency(locale: 'en_US', name: '\$');
 DateFormat date = DateFormat.yMMMd();
+
+final List<Map<String, dynamic>> items = [
+  {
+    'value': 'dog',
+    'label': 'Dog',
+  },
+  {
+    'value': 'cat',
+    'label': 'Cat',
+  },
+  {
+    'value': 'bird',
+    'label': 'Bird',
+  },
+];

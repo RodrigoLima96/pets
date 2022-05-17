@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/shared/utils/constants.dart';
 
 class InputText extends StatelessWidget {
   final TextEditingController controller;
@@ -20,7 +19,7 @@ class InputText extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(color: kWhite),
+        hintStyle: const TextStyle(color: Colors.grey),
       ),
     );
   }

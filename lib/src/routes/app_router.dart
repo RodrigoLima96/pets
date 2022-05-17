@@ -13,7 +13,7 @@ class AppRouter {
   final _router = GoRouter(
     initialLocation: FirebaseAuth.instance.currentUser == null
         ? AppPage.welcome.toPath
-        : AppPage.addPet.toPath,
+        : AppPage.home.toPath,
     routes: <GoRoute>[
       GoRoute(
         path: AppPage.home.toPath,
