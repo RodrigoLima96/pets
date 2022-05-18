@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/add/controllers/add_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
-import 'package:pets/src/shared/utils/methods.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
 import 'package:provider/provider.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddPetButton extends StatelessWidget {
   final Size size;
@@ -15,6 +16,7 @@ class AddPetButton extends StatelessWidget {
   final TextEditingController genderController;
   final TextEditingController weightController;
   final TextEditingController ageController;
+  final GlobalKey<FormState> formKey;
 
   const AddPetButton({
     Key? key,
@@ -25,6 +27,7 @@ class AddPetButton extends StatelessWidget {
     required this.genderController,
     required this.weightController,
     required this.ageController,
+    required this.formKey,
   }) : super(key: key);
 
   @override
@@ -41,16 +44,23 @@ class AddPetButton extends StatelessWidget {
         : RoundedButton(
             text: 'ADD',
             press: () async {
-              await controller.addPet(
-                image,
-                nameController.text,
-                typeController.text,
-                genderController.text,
-                double.parse(weightController.text),
-                int.parse(ageController.text),
-              );
-              showTopSnackBar(context, 'Pet Adicionado!', false);
-              context.pop();
+              if (formKey.currentState!.validate()) {
+                await controller.addPet(
+                  image,
+                  nameController.text,
+                  typeController.text,
+                  genderController.text,
+                  double.parse(weightController.text),
+                  int.parse(ageController.text),
+                );
+                showTopSnackBar(
+                  context,
+                  const CustomSnackBar.success(
+                    message: "pet successfully added!",
+                  ),
+                );
+                context.pop();
+              }
             },
             color: kPrimaryColor,
             textColor: kWhite,

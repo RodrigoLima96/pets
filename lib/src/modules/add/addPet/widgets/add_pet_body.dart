@@ -1,10 +1,8 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/add/addPet/widgets/add_pet_button.dart';
-import 'package:pets/src/modules/auth/login/widgets/input_text.dart';
+import 'package:pets/src/modules/add/addPet/widgets/add_pet_form.dart';
 import 'package:pets/src/modules/add/addPet/widgets/pet_photo.dart';
-import 'package:pets/src/modules/auth/login/widgets/select_input_text.dart';
-import 'package:pets/src/shared/utils/constants.dart';
 
 class AddPetBody extends StatefulWidget {
   final Uint8List image;
@@ -21,6 +19,7 @@ class _AddPetBodyState extends State<AddPetBody> {
   final TextEditingController genderController = TextEditingController();
   final TextEditingController weightController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -44,59 +43,17 @@ class _AddPetBodyState extends State<AddPetBody> {
           children: [
             PetPhoto(size: size, photo: widget.image),
             const SizedBox(height: 20),
-            SizedBox(
-              width: size.width * 0.9,
-              child: InputText(
-                  controller: nameController,
-                  hintText: 'Name',
-                  validator: (value) => null),
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: size.width * 0.9,
-              child: SelectInputText(
-                labelText: 'Type',
-                items: typeItems,
-                controller: typeController,
-              ),
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: size.width * 0.9,
-              child: SelectInputText(
-                labelText: 'Gender',
-                items: genderItems,
-                controller: genderController,
-              ),
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: size.width * 0.9,
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: SelectInputText(
-                      labelText: 'Weight',
-                      items: weightItems,
-                      controller: weightController,
-                    ),
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: SelectInputText(
-                      labelText: 'Age',
-                      items: ageItems,
-                      controller: ageController,
-                    ),
-                  ),
-                ],
-              ),
+            AddPetForm(
+              formKey: _formKey,
+              size: size,
+              nameController: nameController,
+              typeController: typeController,
+              genderController: genderController,
+              weightController: weightController,
+              ageController: ageController,
             ),
             AddPetButton(
+              formKey: _formKey,
               size: size,
               image: widget.image,
               nameController: nameController,

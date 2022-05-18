@@ -28,7 +28,6 @@ class _SignUpBodyState extends State<SignUpBody> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  final validadorController = SignUpValidatorController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -57,6 +56,7 @@ class _SignUpBodyState extends State<SignUpBody> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final validadorController = context.read<SignUpValidatorController>();
 
     return SingleChildScrollView(
       child: SizedBox(

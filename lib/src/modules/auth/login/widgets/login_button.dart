@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/auth/login/controller/login_controller.dart';
+import 'package:pets/src/modules/auth/login/controllers/login_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
 import 'package:provider/provider.dart';

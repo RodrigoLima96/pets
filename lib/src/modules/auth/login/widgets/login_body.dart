@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pets/src/modules/auth/login/controller/login_controller.dart';
-import 'package:pets/src/modules/auth/login/controller/login_validator_controller.dart';
+import 'package:pets/src/modules/auth/login/controllers/login_controller.dart';
+import 'package:pets/src/modules/auth/login/controllers/login_validator_controller.dart';
 import 'package:pets/src/modules/auth/login/widgets/login_button.dart';
 import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
@@ -24,7 +24,6 @@ class _LoginBodyState extends State<LoginBody> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final _validadorController = LoginValidatorController();
 
   @override
   void initState() {
@@ -52,6 +51,7 @@ class _LoginBodyState extends State<LoginBody> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final _validadorController = context.read<LoginValidatorController>();
 
     return Container(
       padding: EdgeInsets.only(top: size.height * 0.15),
