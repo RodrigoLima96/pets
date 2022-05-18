@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pets/src/modules/add/controllers/add_controller.dart';
+import 'package:pets/src/modules/add/addPet/controllers/add_pet_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pets/src/modules/add/controllers/add_controller.dart';
+import 'package:pets/src/modules/add/addPet/controllers/add_pet_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
 import 'package:provider/provider.dart';

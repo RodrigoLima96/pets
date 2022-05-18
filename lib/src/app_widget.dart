@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/add/controllers/add_controller.dart';
-import 'package:pets/src/modules/add/controllers/add_validator_controller.dart';
+import 'package:pets/src/modules/add/addPet/controllers/add_pet_controller.dart';
+import 'package:pets/src/modules/add/addPet/controllers/add_validator_controller.dart';
 import 'package:pets/src/modules/auth/login/controllers/login_validator_controller.dart';
 import 'package:pets/src/modules/auth/signup/controllers/sign_up_validador_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
