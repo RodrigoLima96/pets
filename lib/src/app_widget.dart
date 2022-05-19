@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => FeedController()),
         Provider(create: (_) => AddPetService()),
         ChangeNotifierProvider(
-            create: (context) => AddPetController(context.read())),
+            create: (context) =>
+                AddPetController(context.read(), context.read())),
         Provider(create: (_) => AddPetValidatorController()),
       ],
       child: MaterialApp.router(

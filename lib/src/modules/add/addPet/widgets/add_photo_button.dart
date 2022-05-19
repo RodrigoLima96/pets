@@ -13,19 +13,24 @@ class AddPhotoButton extends StatelessWidget {
     debugPrint('ué');
     return GestureDetector(
       child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/icons/gallery.svg',
-              color: kPrimaryColor,
-            ),
-            const SizedBox(width: 10),
-            const Text(
-              'Add a Photo',
-              style: textStyle,
-            ),
-          ],
+        child: Container(
+          height: 100,
+          width: 200,
+          color: Colors.transparent,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/icons/gallery.svg',
+                color: kPrimaryColor,
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                'Add a Photo',
+                style: textStyle,
+              ),
+            ],
+          ),
         ),
       ),
       onTap: () => controller.addImage(),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pets/src/modules/add/add/controllers/add_controller.dart';
 import 'package:pets/src/shared/models/pet.dart';
 import 'package:pets/src/shared/services/add/add_pet_service.dart';
 import 'package:pets/src/shared/services/storage/storage_service.dart';
@@ -11,9 +12,10 @@ enum AddPetState { idle, loading, success, error }
 class AddPetController extends ChangeNotifier {
   Uint8List? image;
   final AddPetService _addPetService;
+  final AddController _addController;
   var state = AddPetState.idle;
 
-  AddPetController(this._addPetService);
+  AddPetController(this._addPetService, this._addController);
 
   addImage() async {
     image = await pickImage();
@@ -53,8 +55,8 @@ class AddPetController extends ChangeNotifier {
         uid: uid,
       );
 
-      _addPetService.addNewPet(pet.toMap(), uid, petId);
-
+      await _addPetService.addNewPet(pet.toMap(), uid, petId);
+      _addController.getPets();
       clearImage();
       state = AddPetState.success;
       notifyListeners();

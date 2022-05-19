@@ -10,20 +10,25 @@ class GoAddPet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            'assets/icons/add.svg',
-            color: kPrimaryColor,
-            width: 25,
-          ),
-          const SizedBox(width: 10),
-          const Text(
-            'Add a new Pet',
-            style: textStyle,
-          ),
-        ],
+      child: Container(
+        height: 100,
+        width: 200,
+        color: Colors.transparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              'assets/icons/add.svg',
+              color: kPrimaryColor,
+              width: 25,
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              'Add a new Pet',
+              style: textStyle,
+            ),
+          ],
+        ),
       ),
       onTap: () => context.pushNamed(AppPage.addPet.toName),
     );

@@ -16,10 +16,9 @@ class AddBody extends StatelessWidget {
       child: Column(
         children: [
           const GoAddPet(),
-          SizedBox(height: size.height * 0.1),
+          SizedBox(height: size.height * 0.05),
           HeaderPost(size: size),
           PetsList(size: size),
-          // PetCard(size: size),
         ],
       ),
     );

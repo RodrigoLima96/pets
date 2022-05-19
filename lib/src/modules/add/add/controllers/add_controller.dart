@@ -8,10 +8,10 @@ enum AddState { idle, loading, success, error }
 class AddController extends ChangeNotifier {
   List<Pet> selected = [];
   List<Pet> pets = [];
-  final GetPetsService _firestoreService;
+  final GetPetsService _getPetService;
   var state = AddState.idle;
 
-  AddController(this._firestoreService) {
+  AddController(this._getPetService) {
     getPets();
   }
 
@@ -21,7 +21,7 @@ class AddController extends ChangeNotifier {
     final String uid = getUserUid();
 
     try {
-      pets = await _firestoreService.getPets(uid);
+      pets = await _getPetService.getPets(uid);
       state = AddState.success;
       notifyListeners();
     } catch (error) {
