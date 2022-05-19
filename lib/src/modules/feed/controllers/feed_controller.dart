@@ -13,7 +13,7 @@ class FeedController extends ChangeNotifier {
     getPosts(0);
   }
 
-  Future<List<model.Post>> getPosts(int type) async {
+  getPosts(int type) async {
     state = FeedState.loading;
     notifyListeners();
     QuerySnapshot snap;

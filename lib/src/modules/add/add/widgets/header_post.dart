@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/modules/add/add/controllers/add_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
+import 'package:provider/provider.dart';
 
-class HeaderPost extends StatelessWidget {
+class HeaderPost extends StatefulWidget {
   const HeaderPost({
     Key? key,
     required this.size,
@@ -10,14 +12,21 @@ class HeaderPost extends StatelessWidget {
   final Size size;
 
   @override
+  State<HeaderPost> createState() => _HeaderPostState();
+}
+
+class _HeaderPostState extends State<HeaderPost> {
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: size.width * 0.8,
+      width: widget.size.width * 0.8,
       child: Row(
         children: [
-          Text(
-            '1',
-            style: textStyle.copyWith(fontSize: 20),
+          Consumer<AddController>(
+            builder: (context, controller, _) => Text(
+              controller.selected.length.toString(),
+              style: textStyle.copyWith(fontSize: 20),
+            ),
           ),
           const Spacer(),
           TextButton(

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/modules/add/add/controllers/add_controller.dart';
 import 'package:pets/src/modules/add/addPet/controllers/add_pet_controller.dart';
-import 'package:pets/src/modules/add/addPet/controllers/add_validator_controller.dart';
+import 'package:pets/src/modules/add/addPet/controllers/add_pet_validator_controller.dart';
 import 'package:pets/src/modules/auth/login/controllers/login_validator_controller.dart';
 import 'package:pets/src/modules/auth/signup/controllers/sign_up_validador_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
 import 'package:pets/src/routes/app_router.dart';
+import 'package:pets/src/shared/services/getPets/get_pets_service.dart';
+import 'package:pets/src/shared/services/add/add_pet_service.dart';
 import 'package:provider/provider.dart';
 import 'modules/auth/login/controllers/login_controller.dart';
 import 'modules/auth/signup/controllers/sign_up_controller.dart';
@@ -27,8 +30,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => LoginController(context.read())),
         Provider(create: (_) => LoginValidatorController()),
+        Provider(create: (_) => GetPetsService()),
+        ChangeNotifierProvider(
+            create: (context) => AddController(context.read())),
         ChangeNotifierProvider(create: (context) => FeedController()),
-        ChangeNotifierProvider(create: (context) => AddController()),
+        Provider(create: (_) => AddPetService()),
+        ChangeNotifierProvider(
+            create: (context) => AddPetController(context.read())),
         Provider(create: (_) => AddPetValidatorController()),
       ],
       child: MaterialApp.router(

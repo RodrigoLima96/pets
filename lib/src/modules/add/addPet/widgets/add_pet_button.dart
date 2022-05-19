@@ -32,7 +32,7 @@ class AddPetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<AddController>();
+    final controller = context.watch<AddPetController>();
 
     return controller.state == AddPetState.loading
         ? SizedBox(

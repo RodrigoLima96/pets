@@ -16,7 +16,7 @@ class AddPetPage extends StatefulWidget {
 class _AddPetPageState extends State<AddPetPage> {
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<AddController>();
+    final controller = context.watch<AddPetController>();
 
     return Scaffold(
         backgroundColor: kBlack,

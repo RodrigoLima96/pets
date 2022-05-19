@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pets/src/shared/models/pet.dart';
+import 'package:pets/src/shared/services/add/add_pet_service.dart';
 import 'package:pets/src/shared/services/storage/storage_service.dart';
 import 'dart:typed_data';
 import 'package:pets/src/shared/utils/methods.dart';
@@ -8,9 +8,12 @@ import 'package:uuid/uuid.dart';
 
 enum AddPetState { idle, loading, success, error }
 
-class AddController extends ChangeNotifier {
+class AddPetController extends ChangeNotifier {
   Uint8List? image;
+  final AddPetService _addPetService;
   var state = AddPetState.idle;
+
+  AddPetController(this._addPetService);
 
   addImage() async {
     image = await pickImage();
@@ -33,7 +36,6 @@ class AddController extends ChangeNotifier {
     state = AddPetState.loading;
     notifyListeners();
     try {
-      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
       String petId = const Uuid().v1();
 
       final String uid = getUserUid();
@@ -51,7 +53,8 @@ class AddController extends ChangeNotifier {
         uid: uid,
       );
 
-      _firestore.collection('pets').doc(petId).set(pet.toMap());
+      _addPetService.addNewPet(pet.toMap(), uid, petId);
+
       clearImage();
       state = AddPetState.success;
       notifyListeners();
