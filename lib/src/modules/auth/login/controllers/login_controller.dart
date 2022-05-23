@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pets/src/shared/services/auth/login_service.dart';
+import 'package:pets/src/services/auth/login_service.dart';
 
 enum LoginState { idle, loading, success, error }
 

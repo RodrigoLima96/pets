@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pets/src/modules/add/add/controllers/add_controller.dart';
+import 'package:pets/src/services/add/add_pet_service.dart';
+import 'package:pets/src/services/storage/storage_service.dart';
 import 'package:pets/src/shared/models/pet.dart';
-import 'package:pets/src/shared/services/add/add_pet_service.dart';
-import 'package:pets/src/shared/services/storage/storage_service.dart';
 import 'dart:typed_data';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:uuid/uuid.dart';

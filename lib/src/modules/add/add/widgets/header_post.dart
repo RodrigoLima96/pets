@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/add/add/controllers/add_controller.dart';
+import 'package:pets/src/modules/add/addPost/add_post_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
+import 'package:pets/src/shared/utils/methods.dart';
 import 'package:provider/provider.dart';
 
 class HeaderPost extends StatefulWidget {
@@ -18,6 +20,7 @@ class HeaderPost extends StatefulWidget {
 class _HeaderPostState extends State<HeaderPost> {
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<AddController>();
     return SizedBox(
       width: widget.size.width * 0.8,
       child: Row(
@@ -30,7 +33,20 @@ class _HeaderPostState extends State<HeaderPost> {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              if (controller.selected.isNotEmpty) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => AddPostPage(
+                      pets: controller.selected,
+                    ),
+                  ),
+                );
+              } else {
+                showSnackBar(context, 'Select a pet');
+              }
+            },
             child: Text(
               'POST',
               style: textStyle.copyWith(color: Colors.blueAccent),

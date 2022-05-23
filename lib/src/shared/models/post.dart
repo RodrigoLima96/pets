@@ -1,11 +1,13 @@
 import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:pets/src/shared/models/pet.dart';
 
 class Post {
   final String postId;
   final String uid;
-  final Pet pet;
+  final List<Pet> pet;
   final String description;
   final DateTime datePublished;
   final double price;
@@ -29,7 +31,7 @@ class Post {
     return {
       'postId': postId,
       'uid': uid,
-      'pet': pet.toMap(),
+      'pet': pet.map((x) => x.toMap()).toList(),
       'description': description,
       'datePublished': datePublished.millisecondsSinceEpoch,
       'price': price,
@@ -45,16 +47,7 @@ class Post {
     return Post(
       postId: map['postId'] ?? '',
       uid: map['uid'] ?? '',
-      pet: Pet(
-        petName: map['petName'] ?? '',
-        type: map['type'] ?? '',
-        photoUrl: map['photoUrl'] ?? '',
-        weight: map['weight']?.toDouble() ?? 0.0,
-        age: map['age']?.toInt() ?? 0,
-        gender: map['gender'] ?? '',
-        petId: map['petId'] ?? '',
-        uid: map['uid'] ?? '',
-      ),
+      pet: List<Pet>.from(map['pet']?.map((x) => Pet.fromFirestore(x))),
       description: map['description'] ?? '',
       datePublished: DateTime.fromMillisecondsSinceEpoch(
           map['datePublished'].millisecondsSinceEpoch),

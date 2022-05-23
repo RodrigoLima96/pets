@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/shared/services/auth/sign_up_service.dart';
+import 'package:pets/src/services/auth/sign_up_service.dart';
 
 enum SignUpState { idle, loading, success, error }
 
