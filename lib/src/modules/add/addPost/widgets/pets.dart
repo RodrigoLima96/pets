@@ -10,16 +10,17 @@ class Pets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
+      children: [
         CircleAvatar(
-          radius: 30,
+          radius: 40,
           backgroundImage: NetworkImage(
-            'https://firebasestorage.googleapis.com/v0/b/pets-d0aad.appspot.com/o/posts%2FUuT6Re8vK5PoYL4zMDJoAfjqrAm2%2Fangel-luciano-LATYeZyw88c-unsplash%20(1).jpg?alt=media&token=274a1604-e6ef-4cf1-ba03-73f11fe66634',
+            photo,
           ),
         ),
+        const SizedBox(height: 10),
         Text(
-          'Mona',
-          style: textStyle,
+          name,
+          style: textStyle.copyWith(fontSize: 18),
         ),
       ],
     );

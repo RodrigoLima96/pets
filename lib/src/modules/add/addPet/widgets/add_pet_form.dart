@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/add/addPet/controllers/add_pet_validator_controller.dart';
-import 'package:pets/src/modules/auth/login/widgets/input_text.dart';
+import 'package:pets/src/shared/widgets/input_text.dart';
 import 'package:pets/src/modules/auth/login/widgets/select_input_text.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:provider/provider.dart';

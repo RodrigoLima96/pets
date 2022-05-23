@@ -9,7 +9,7 @@ class PetsListPost extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> pets = ['1', '2'];
     return Container(
-      height: size.height * 0.1,
+      height: size.height * 0.15,
       width: double.infinity,
       margin: EdgeInsets.only(top: size.height * 0.05),
       child: Center(
@@ -18,12 +18,13 @@ class PetsListPost extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int i) {
             return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Pets(
-                  photo:
-                      'https://firebasestorage.googleapis.com/v0/b/pets-d0aad.appspot.com/o/posts%2FUuT6Re8vK5PoYL4zMDJoAfjqrAm2%2Fangel-luciano-LATYeZyw88c-unsplash%20(1).jpg?alt=media&token=274a1604-e6ef-4cf1-ba03-73f11fe66634',
-                  name: 'Mona',
-                ));
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Pets(
+                photo:
+                    'https://firebasestorage.googleapis.com/v0/b/pets-d0aad.appspot.com/o/posts%2FUuT6Re8vK5PoYL4zMDJoAfjqrAm2%2Fangel-luciano-LATYeZyw88c-unsplash%20(1).jpg?alt=media&token=274a1604-e6ef-4cf1-ba03-73f11fe66634',
+                name: 'Mona',
+              ),
+            );
           },
           itemCount: pets.length,
         ),
