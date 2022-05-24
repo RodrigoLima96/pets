@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/add/addPet/controllers/add_pet_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
+import 'package:pets/src/shared/utils/methods.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
 import 'package:provider/provider.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddPetButton extends StatelessWidget {
   final Size size;
@@ -53,12 +52,7 @@ class AddPetButton extends StatelessWidget {
                   double.parse(weightController.text),
                   int.parse(ageController.text),
                 );
-                showTopSnackBar(
-                  context,
-                  const CustomSnackBar.success(
-                    message: "pet successfully added!",
-                  ),
-                );
+                showSnackBar(context, 'pet successfully added!');
                 context.pop();
               }
             },

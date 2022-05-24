@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/add/addPost/controllers/add_post_controller.dart';
 import 'package:pets/src/modules/home/home_page.dart';
-import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/models/pet.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';

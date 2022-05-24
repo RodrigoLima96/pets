@@ -20,8 +20,19 @@ class _PetsListState extends State<PetsList> {
   Widget build(BuildContext context) {
     final controller = context.watch<AddController>();
 
-    return controller.state == AddState.loading
-        ? const Center(child: CircularProgressIndicator())
+    if (controller.state == AddState.loading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    return (controller.pets.isEmpty)
+        ? Center(
+            child: Container(
+              padding: EdgeInsets.only(top: widget.size.height * 0.1),
+              child: const Text(
+                'No pets added yet',
+                style: textStyle,
+              ),
+            ),
+          )
         : Expanded(
             child: SizedBox(
               child: ListView.builder(
