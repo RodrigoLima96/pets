@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:pets/src/shared/models/pet.dart';
 
 class Post {

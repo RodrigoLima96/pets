@@ -4,15 +4,13 @@ class AddPostService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String status = '';
 
-  Future<String> addNewPet(
-      Map<String, dynamic> pets, String uid, String petId) async {
+  Future<String> addNewPost(
+    String uid,
+    Map<String, dynamic> post,
+    String postId,
+  ) async {
     try {
-      _firestore
-          .collection('pets')
-          .doc(uid)
-          .collection('pets')
-          .doc(petId)
-          .set(pets);
+      _firestore.collection('posts').doc(postId).set(post);
       status = 'success';
     } catch (error) {
       status = error.toString();

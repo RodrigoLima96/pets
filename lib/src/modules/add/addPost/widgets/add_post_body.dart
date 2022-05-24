@@ -40,7 +40,7 @@ class _AddPostBodyState extends State<AddPostBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            PetsListPost(size: size),
+            PetsListPost(size: size, pets: widget.pets),
             Text(widget.pets.length.toString(),
                 style: textStyle.copyWith(fontSize: 18)),
             AddPostForm(
@@ -50,7 +50,14 @@ class _AddPostBodyState extends State<AddPostBody> {
               descriptionController: descriptionController,
               formKey: _formKey,
             ),
-            AddPostButton(size: size, formKey: _formKey, pets: widget.pets),
+            AddPostButton(
+              size: size,
+              formKey: _formKey,
+              pets: widget.pets,
+              priceController: priceController,
+              daysController: daysController,
+              descriptionController: descriptionController,
+            ),
           ],
         ),
       ),
