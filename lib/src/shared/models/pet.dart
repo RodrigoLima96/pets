@@ -50,6 +50,19 @@ class Pet {
     );
   }
 
+  factory Pet.fromMap(Map<String, dynamic> map) {
+    return Pet(
+      petName: map['petName'] ?? '',
+      petId: map['petId'] ?? '',
+      type: map['type'] ?? '',
+      photoUrl: map['photoUrl'] ?? '',
+      weight: map['weight']?.toDouble() ?? 0.0,
+      age: map['age']?.toInt() ?? 0,
+      gender: map['gender'] ?? '',
+      uid: map['uid'] ?? '',
+    );
+  }
+
   String toJson() => json.encode(toMap());
 
   factory Pet.fromJson(String source) => Pet.fromFirestore(json.decode(source));

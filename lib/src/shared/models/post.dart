@@ -5,37 +5,40 @@ import 'package:pets/src/shared/models/pet.dart';
 class Post {
   final String postId;
   final String uid;
-  final List<Pet> pet;
+  final List<Pet> pets;
   final String description;
   final DateTime datePublished;
   final double price;
   final int days;
   final String username;
   final String userPhotoUrl;
+  final String type;
 
   Post({
     required this.postId,
     required this.uid,
-    required this.pet,
+    required this.pets,
     required this.description,
     required this.datePublished,
     required this.price,
     required this.days,
     required this.username,
     required this.userPhotoUrl,
+    required this.type,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'postId': postId,
       'uid': uid,
-      'pet': pet.map((x) => x.toMap()).toList(),
+      'pets': pets.map((x) => x.toMap()).toList(),
       'description': description,
-      'datePublished': datePublished.millisecondsSinceEpoch,
+      'datePublished': datePublished,
       'price': price,
       'days': days,
       'username': username,
       'userPhotoUrl': userPhotoUrl,
+      'type': type,
     };
   }
 
@@ -45,14 +48,14 @@ class Post {
     return Post(
       postId: map['postId'] ?? '',
       uid: map['uid'] ?? '',
-      pet: List<Pet>.from(map['pet']?.map((x) => Pet.fromFirestore(x))),
+      pets: List<Pet>.from(map['pets']?.map((x) => Pet.fromMap(x))),
       description: map['description'] ?? '',
-      datePublished: DateTime.fromMillisecondsSinceEpoch(
-          map['datePublished'].millisecondsSinceEpoch),
+      datePublished: map['datePublished'].toDate() ?? '',
       price: map['price']?.toDouble() ?? 0.0,
       days: map['days']?.toInt() ?? 0,
       username: map['username'] ?? '',
       userPhotoUrl: map['userPhotoUrl'] ?? '',
+      type: map['type'] ?? '',
     );
   }
 

@@ -21,7 +21,7 @@ class PostCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    post.pet[0].petName,
+                    post.pets[0].petName,
                     style: textStyle,
                   ),
                   Text(
@@ -44,7 +44,7 @@ class PostCard extends StatelessWidget {
           width: double.infinity,
           margin: const EdgeInsets.symmetric(vertical: 5),
           child: Image.network(
-            post.pet[0].photoUrl,
+            post.pets[0].photoUrl,
             fit: BoxFit.cover,
           ),
         ),
@@ -58,11 +58,11 @@ class PostCard extends StatelessWidget {
                 style: textStyle,
               ),
               Text(
-                '${post.pet[0].weight.toString()} Pounds',
+                '${post.pets[0].weight.toString()} Pounds',
                 style: textStyle,
               ),
               Text(
-                post.pet[0].gender,
+                post.pets[0].gender,
                 style: textStyle,
               ),
             ],
