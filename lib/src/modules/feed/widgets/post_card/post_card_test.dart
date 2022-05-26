@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/feed/widgets/box_text.dart';
-import 'package:pets/src/shared/models/pet.dart';
+import 'package:pets/src/modules/feed/widgets/post_card/image_card.dart';
 import 'package:pets/src/shared/models/post.dart' as model;
 import 'package:pets/src/shared/utils/constants.dart';
 
-class PostCardTest extends StatefulWidget {
+class PostCard extends StatefulWidget {
   final Size size;
   final model.Post post;
-  const PostCardTest({Key? key, required this.size, required this.post})
+  const PostCard({Key? key, required this.size, required this.post})
       : super(key: key);
 
   @override
-  State<PostCardTest> createState() => _PostCardTestState();
+  State<PostCard> createState() => _PostCardState();
 }
 
-class _PostCardTestState extends State<PostCardTest> {
+class _PostCardState extends State<PostCard> {
+  int indexImage = 1;
+
   @override
   Widget build(BuildContext context) {
-    final List<Pet> pets = widget.post.pets;
     return SingleChildScrollView(
       child: SizedBox(
         height: widget.size.height * 0.45,
@@ -51,29 +51,7 @@ class _PostCardTestState extends State<PostCardTest> {
                 ],
               ),
             ),
-            SizedBox(
-              height: widget.size.height * 0.3,
-              width: widget.size.width,
-              child: ListView.builder(
-                itemCount: pets.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Stack(
-                    children: [
-                      SizedBox(
-                        height: widget.size.height * 0.3,
-                        width: widget.size.width,
-                        child: Image.network(
-                          widget.post.pets[index].photoUrl,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      BoxText(text: widget.post.pets[index].petName),
-                    ],
-                  );
-                },
-              ),
-            ),
+            ImageCard(size: widget.size, pets: widget.post.pets),
             Container(
               width: widget.size.width,
               padding: const EdgeInsets.symmetric(
@@ -88,9 +66,9 @@ class _PostCardTestState extends State<PostCardTest> {
                     style: textStyle,
                   ),
                   Text(
-                    pets.length > 1
-                        ? '${pets.length.toString()} Pets'
-                        : '${pets.length.toString()} Pet',
+                    widget.post.pets.length > 1
+                        ? '${widget.post.pets.length.toString()} Pets'
+                        : '${widget.post.pets.length.toString()} Pet',
                     style: textStyle,
                   ),
                 ],

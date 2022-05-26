@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
-import 'package:pets/src/modules/feed/widgets/post_card.dart';
-import 'package:pets/src/modules/feed/widgets/post_card_test.dart';
+import 'package:pets/src/modules/feed/widgets/post_card/post_card_test.dart';
 import 'package:provider/provider.dart';
 
 class PostsList extends StatelessWidget {
@@ -41,7 +40,7 @@ class PostsList extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: controller.posts.length,
-      itemBuilder: (context, index) => PostCardTest(
+      itemBuilder: (context, index) => PostCard(
         post: controller.posts[index],
         size: size,
       ),
