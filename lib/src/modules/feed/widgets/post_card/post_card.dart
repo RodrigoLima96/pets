@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/modules/post/post_page.dart';
 import 'package:pets/src/shared/models/post.dart' as model;
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/list_images.dart';
@@ -51,7 +52,15 @@ class _PostCardState extends State<PostCard> {
                 ],
               ),
             ),
-            ListImages(pets: widget.post.pets, size: widget.size),
+            GestureDetector(
+              child: ListImages(pets: widget.post.pets, size: widget.size),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PostPage(post: widget.post)));
+              },
+            ),
             Container(
               width: widget.size.width,
               padding: const EdgeInsets.symmetric(

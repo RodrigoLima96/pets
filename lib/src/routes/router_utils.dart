@@ -4,7 +4,6 @@ enum AppPage {
   singUp,
   home,
   addPet,
-  post,
 }
 
 extension AppPageExtension on AppPage {
@@ -20,8 +19,6 @@ extension AppPageExtension on AppPage {
         return "/singUp";
       case AppPage.addPet:
         return "/addPet";
-      case AppPage.post:
-        return "/post";
       default:
         return "/";
     }
@@ -39,8 +36,6 @@ extension AppPageExtension on AppPage {
         return "signUp";
       case AppPage.addPet:
         return "addPet";
-      case AppPage.post:
-        return "post";
       default:
         return "home";
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/add/addPost/controllers/add_post_validator_controller.dart';
+import 'package:pets/src/shared/widgets/input_description.dart';
 import 'package:pets/src/shared/widgets/input_text.dart';
 import 'package:provider/provider.dart';
 
@@ -57,21 +58,11 @@ class AddPostForm extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              width: size.width,
-              padding: EdgeInsets.only(top: size.height * 0.1),
-              child: TextFormField(
-                textAlign: TextAlign.center,
-                controller: descriptionController,
-                decoration: const InputDecoration(
-                  hintText: 'Write a description...',
-                  border: InputBorder.none,
-                ),
-                maxLines: 5,
-                validator: (value) {
-                  return _validadorController.descriptionValidator(value!);
-                },
-              ),
+            InputDescription(
+              size: size,
+              descriptionController: descriptionController,
+              validadorController: _validadorController,
+              padding: size.height * 0.1,
             ),
           ],
         ),
