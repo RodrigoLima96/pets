@@ -4,17 +4,18 @@ import 'package:pets/src/shared/models/pet.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-class ImageCard extends StatefulWidget {
-  final Size size;
+class ListImages extends StatefulWidget {
   final List<Pet> pets;
-  const ImageCard({Key? key, required this.size, required this.pets})
+  final Size size;
+
+  const ListImages({Key? key, required this.pets, required this.size})
       : super(key: key);
 
   @override
-  State<ImageCard> createState() => _ImageCardState();
+  State<ListImages> createState() => _ListImageState();
 }
 
-class _ImageCardState extends State<ImageCard> {
+class _ListImageState extends State<ListImages> {
   int indexImage = 1;
 
   @override
@@ -38,7 +39,6 @@ class _ImageCardState extends State<ImageCard> {
                       } else if (indexImage < widget.pets.length) {
                         indexImage += index;
                       }
-                      debugPrint(indexImage.toString());
                     });
                   }
                 },

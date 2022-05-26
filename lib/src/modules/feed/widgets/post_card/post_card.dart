@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/feed/widgets/post_card/image_card.dart';
 import 'package:pets/src/shared/models/post.dart' as model;
 import 'package:pets/src/shared/utils/constants.dart';
+import 'package:pets/src/shared/widgets/list_images.dart';
 
 class PostCard extends StatefulWidget {
   final Size size;
@@ -51,7 +51,7 @@ class _PostCardState extends State<PostCard> {
                 ],
               ),
             ),
-            ImageCard(size: widget.size, pets: widget.post.pets),
+            ListImages(pets: widget.post.pets, size: widget.size),
             Container(
               width: widget.size.width,
               padding: const EdgeInsets.symmetric(
