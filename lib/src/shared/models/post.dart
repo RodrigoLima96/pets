@@ -13,6 +13,7 @@ class Post {
   final String username;
   final String userPhotoUrl;
   final String type;
+  final double rating;
 
   Post({
     required this.postId,
@@ -25,6 +26,7 @@ class Post {
     required this.username,
     required this.userPhotoUrl,
     required this.type,
+    required this.rating,
   });
 
   Map<String, dynamic> toMap() {
@@ -39,6 +41,7 @@ class Post {
       'username': username,
       'userPhotoUrl': userPhotoUrl,
       'type': type,
+      'rating': rating,
     };
   }
 
@@ -51,11 +54,12 @@ class Post {
       pets: List<Pet>.from(map['pets']?.map((x) => Pet.fromMap(x))),
       description: map['description'] ?? '',
       datePublished: map['datePublished'].toDate() ?? '',
-      price: map['price']?.toDouble() ?? 0.0,
-      days: map['days']?.toInt() ?? 0,
+      price: map['price'].toDouble() ?? 0.0,
+      days: map['days'].toInt() ?? 0,
       username: map['username'] ?? '',
       userPhotoUrl: map['userPhotoUrl'] ?? '',
       type: map['type'] ?? '',
+      rating: map['rating'].toDouble() ?? 0.0,
     );
   }
 

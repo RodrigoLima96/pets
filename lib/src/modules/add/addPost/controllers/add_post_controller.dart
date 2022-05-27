@@ -45,6 +45,7 @@ class AddPostController extends ChangeNotifier {
         username: user.name,
         userPhotoUrl: user.photoUrl!,
         type: pets[0].type,
+        rating: user.rating,
       );
 
       await _addPostService.addNewPost(user.uid, post.toMap(), postId);

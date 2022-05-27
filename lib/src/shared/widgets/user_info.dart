@@ -5,11 +5,13 @@ class UserInfo extends StatelessWidget {
   final String userPhoto;
   final String username;
   final double rating;
+  final double imageSize;
   const UserInfo({
     Key? key,
     required this.userPhoto,
     required this.username,
     required this.rating,
+    required this.imageSize,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class UserInfo extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          radius: 40,
+          radius: imageSize,
           backgroundImage: NetworkImage(
             userPhoto,
           ),

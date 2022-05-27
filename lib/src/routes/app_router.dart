@@ -5,7 +5,6 @@ import 'package:pets/src/modules/auth/login/login_page.dart';
 import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
 import 'package:pets/src/modules/auth/welcome/welcome_page.dart';
 import 'package:pets/src/modules/home/home_page.dart';
-import 'package:pets/src/modules/post/post_page.dart';
 import 'package:pets/src/routes/router_utils.dart';
 
 class AppRouter {

@@ -22,6 +22,7 @@ class SignUpService {
         uid: credential.user!.uid,
         name: name,
         email: email,
+        rating: 0.0,
       );
 
       await _firestore
