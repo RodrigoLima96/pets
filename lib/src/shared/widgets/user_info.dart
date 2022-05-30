@@ -16,42 +16,45 @@ class UserInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: imageSize,
-          backgroundImage: NetworkImage(
-            userPhoto,
+    return Padding(
+      padding: const EdgeInsets.only(top: 50),
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: imageSize,
+            backgroundImage: NetworkImage(
+              userPhoto,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: Text(username, style: textStyle),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 3),
-                child: Icon(
-                  Icons.star,
-                  color: Colors.amber.shade400,
-                  size: 20,
-                ),
-              ),
-              Text(
-                '${rating.toString()}/10',
-                style: textStyle.copyWith(
-                  letterSpacing: -0.7,
-                ),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(username, style: textStyle),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 3),
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.amber.shade400,
+                    size: 20,
+                  ),
+                ),
+                Text(
+                  '${rating.toString()}/10',
+                  style: textStyle.copyWith(
+                    letterSpacing: -0.7,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

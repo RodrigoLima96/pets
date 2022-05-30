@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pets/src/modules/profile/widgets/user_pets_avatar.dart';
 import 'package:pets/src/shared/models/pet.dart';
 
-class UserPetsList extends StatelessWidget {
-  const UserPetsList({
+class PetsList extends StatelessWidget {
+  const PetsList({
     Key? key,
     required this.size,
     required this.pets,
@@ -15,7 +15,7 @@ class UserPetsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height * 0.2,
+      height: size.height * 0.11,
       width: size.width,
       child: Center(
         child: ListView.builder(
