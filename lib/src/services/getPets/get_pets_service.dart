@@ -9,8 +9,11 @@ class GetPetsService {
     QuerySnapshot snap;
     List<Pet> pets = [];
     try {
-      snap =
-          await _firestore.collection('pets').doc(uid).collection('pets').get();
+      snap = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('pets')
+          .get();
       for (var pet in snap.docs) {
         pets.add(Pet.fromFirestore(pet));
       }

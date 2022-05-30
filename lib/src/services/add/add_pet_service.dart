@@ -8,7 +8,7 @@ class AddPetService {
       Map<String, dynamic> pets, String uid, String petId) async {
     try {
       _firestore
-          .collection('pets')
+          .collection('users')
           .doc(uid)
           .collection('pets')
           .doc(petId)
