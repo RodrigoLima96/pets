@@ -21,7 +21,7 @@ class AddController extends ChangeNotifier {
     final String uid = getUserUid();
 
     try {
-      pets = await _getPetService.getPets(uid);
+      pets = await _getPetService.getPets(uid, 'pets');
       state = AddState.success;
       notifyListeners();
     } catch (error) {
