@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/profile/widgets/user_pets_avatar.dart';
+import 'package:pets/src/modules/profile/profile/widgets/user_pets_avatar.dart';
 import 'package:pets/src/shared/models/pet.dart';
 
 class PetsList extends StatelessWidget {

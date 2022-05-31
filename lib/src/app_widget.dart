@@ -7,7 +7,7 @@ import 'package:pets/src/modules/add/addPost/controllers/add_post_validator_cont
 import 'package:pets/src/modules/auth/login/controllers/login_validator_controller.dart';
 import 'package:pets/src/modules/auth/signup/controllers/sign_up_validador_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
-import 'package:pets/src/modules/profile/controllers/profile_controller.dart';
+import 'package:pets/src/modules/profile/profile/controllers/profile_controller.dart';
 import 'package:pets/src/routes/app_router.dart';
 import 'package:pets/src/services/add/add_pet_service.dart';
 import 'package:pets/src/services/add/add_post_service.dart';

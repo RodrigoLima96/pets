@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pets/src/modules/profile/notifications/notifications_page.dart';
+import 'package:pets/src/modules/profile/settings/settings_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
 class SettingsAndNotifications extends StatelessWidget {
@@ -18,7 +20,12 @@ class SettingsAndNotifications extends StatelessWidget {
       child: Column(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsPage()));
+            },
             icon: SvgPicture.asset(
               'assets/icons/setting.svg',
               color: kPrimaryColor,
@@ -28,7 +35,12 @@ class SettingsAndNotifications extends StatelessWidget {
           Stack(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NotificationsPage()));
+                },
                 icon: SvgPicture.asset(
                   'assets/icons/notification.svg',
                   color: kPrimaryColor,

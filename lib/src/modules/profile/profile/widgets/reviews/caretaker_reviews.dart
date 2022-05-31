@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/profile/widgets/reviews/review_card.dart';
+import 'package:pets/src/modules/profile/profile/widgets/reviews/review_card.dart';
 import 'package:pets/src/shared/models/review.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 

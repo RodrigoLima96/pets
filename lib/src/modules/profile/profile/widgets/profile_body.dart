@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/profile/controllers/profile_controller.dart';
-import 'package:pets/src/modules/profile/widgets/reviews/caretaker_reviews.dart';
-import 'package:pets/src/modules/profile/widgets/list_name.dart';
-import 'package:pets/src/modules/profile/widgets/pets_list.dart';
-import 'package:pets/src/modules/profile/widgets/settings_and_notification.dart';
-import 'package:pets/src/modules/profile/widgets/profile_user_info.dart';
+import 'package:pets/src/modules/profile/profile/controllers/profile_controller.dart';
+import 'package:pets/src/modules/profile/profile/widgets/list_name.dart';
+import 'package:pets/src/modules/profile/profile/widgets/pets_list.dart';
+import 'package:pets/src/modules/profile/profile/widgets/profile_user_info.dart';
+import 'package:pets/src/modules/profile/profile/widgets/reviews/caretaker_reviews.dart';
+import 'package:pets/src/modules/profile/profile/widgets/settings_and_notification.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:provider/provider.dart';
 
