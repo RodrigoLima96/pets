@@ -20,6 +20,10 @@ pickImage() async {
   }
 }
 
+Widget loading() {
+  return const Center(child: CircularProgressIndicator());
+}
+
 getUserUid() {
   String uid = FirebaseAuth.instance.currentUser!.uid;
   return uid;

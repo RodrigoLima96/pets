@@ -18,12 +18,10 @@ class ProfileController extends ChangeNotifier {
 
   Future<List<Pet>> loadUserInfo(String uid) async {
     state = ProfileState.loading;
-    notifyListeners();
     try {
       petsList = await _getPetsService.getPets(uid, 'pets');
       user = await getUserDetails();
       caretakerList = await _getPetsService.getPets(uid, 'caretaker');
-
       state = ProfileState.success;
       notifyListeners();
     } catch (error) {
@@ -31,6 +29,8 @@ class ProfileController extends ChangeNotifier {
       state = ProfileState.error;
       notifyListeners();
     }
+
+    state = ProfileState.idle;
 
     return petsList;
   }

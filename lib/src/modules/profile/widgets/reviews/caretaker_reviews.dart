@@ -15,7 +15,7 @@ class CaretakerReviews extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: 2,
+        itemCount: reviews.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: kDefaultPadding),
