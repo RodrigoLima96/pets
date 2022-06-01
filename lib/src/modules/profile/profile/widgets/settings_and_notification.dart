@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pets/src/modules/profile/notifications/notifications_page.dart';
-import 'package:pets/src/modules/profile/settings/settings_page.dart';
+import 'package:pets/src/modules/profile/settings/settings/settings_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
 class SettingsAndNotifications extends StatelessWidget {
