@@ -13,9 +13,11 @@ class AddPetController extends ChangeNotifier {
   Uint8List? image;
   final AddPetService _addPetService;
   final AddController _addController;
+  final StorageService _storageService;
   var state = AddPetState.idle;
 
-  AddPetController(this._addPetService, this._addController);
+  AddPetController(
+      this._addPetService, this._addController, this._storageService);
 
   addImage() async {
     image = await pickImage();
@@ -41,8 +43,8 @@ class AddPetController extends ChangeNotifier {
       String petId = const Uuid().v1();
 
       final String uid = getUserUid();
-      String photoUrl = await StorageService()
-          .uploadImageToStorage('pets', petId, file, false);
+      String photoUrl = await _storageService.uploadImageToStorage(
+          'pets', petId, file, false);
 
       Pet pet = Pet(
         petName: name,

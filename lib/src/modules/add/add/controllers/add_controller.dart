@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pets/src/services/getPets/get_pets_service.dart';
+import 'package:pets/src/services/pet/get_pets_service.dart';
 import 'package:pets/src/shared/models/pet.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 

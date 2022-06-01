@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pets/src/modules/profile/settings/edit_profile/edit_profile_page.dart';
 import 'package:pets/src/modules/profile/settings/settings/widgets/logout_button.dart';
 import 'package:pets/src/modules/profile/settings/settings/widgets/setting_option.dart';
+import 'package:pets/src/shared/models/user.dart' as model;
 
 class SettingsBody extends StatelessWidget {
-  const SettingsBody({Key? key}) : super(key: key);
+  final model.User user;
+  const SettingsBody({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,10 @@ class SettingsBody extends StatelessWidget {
             text: 'Edit Profile',
             icon: 'assets/icons/person.svg',
             function: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => const EditProfilePage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => EditProfilePage(user: user)));
             },
           ),
           SettingOption(

@@ -53,8 +53,10 @@ class AddPostButton extends StatelessWidget {
                     message: "post successfully added!",
                   ),
                 );
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (_) => const HomePage()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const HomePage(index: 1)));
               }
             },
             color: kPrimaryColor,

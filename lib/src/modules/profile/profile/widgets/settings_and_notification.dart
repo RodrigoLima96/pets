@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pets/src/modules/profile/notifications/notifications_page.dart';
 import 'package:pets/src/modules/profile/settings/settings/settings_page.dart';
+import 'package:pets/src/shared/models/user.dart' as model;
 import 'package:pets/src/shared/utils/constants.dart';
 
 class SettingsAndNotifications extends StatelessWidget {
+  final model.User user;
   final int notifications;
 
   const SettingsAndNotifications({
     Key? key,
     required this.notifications,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -24,7 +27,7 @@ class SettingsAndNotifications extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const SettingsPage()));
+                      builder: (context) => SettingsPage(user: user)));
             },
             icon: SvgPicture.asset(
               'assets/icons/setting.svg',

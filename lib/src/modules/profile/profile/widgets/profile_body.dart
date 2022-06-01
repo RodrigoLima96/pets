@@ -43,7 +43,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                 children: [
                   Stack(
                     children: [
-                      const SettingsAndNotifications(notifications: 3),
+                      SettingsAndNotifications(
+                        notifications: 3,
+                        user: controller.user,
+                      ),
                       ProfileUserInfo(user: controller.user),
                     ],
                   ),

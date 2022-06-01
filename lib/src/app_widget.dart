@@ -8,12 +8,15 @@ import 'package:pets/src/modules/auth/login/controllers/login_validator_controll
 import 'package:pets/src/modules/auth/signup/controllers/sign_up_validador_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
 import 'package:pets/src/modules/profile/profile/controllers/profile_controller.dart';
+import 'package:pets/src/modules/profile/settings/edit_profile/controllers/edit_user_controller.dart';
 import 'package:pets/src/routes/app_router.dart';
 import 'package:pets/src/services/add/add_pet_service.dart';
 import 'package:pets/src/services/add/add_post_service.dart';
 import 'package:pets/src/services/auth/login_service.dart';
 import 'package:pets/src/services/auth/sign_up_service.dart';
-import 'package:pets/src/services/getPets/get_pets_service.dart';
+import 'package:pets/src/services/pet/get_pets_service.dart';
+import 'package:pets/src/services/storage/storage_service.dart';
+import 'package:pets/src/services/user/update_user_service.dart';
 import 'package:provider/provider.dart';
 import 'modules/auth/login/controllers/login_controller.dart';
 import 'modules/auth/signup/controllers/sign_up_controller.dart';
@@ -39,9 +42,10 @@ class MyApp extends StatelessWidget {
             create: (context) => AddController(context.read())),
         ChangeNotifierProvider(create: (context) => FeedController()),
         Provider(create: (_) => AddPetService()),
+        Provider(create: (_) => StorageService()),
         ChangeNotifierProvider(
-            create: (context) =>
-                AddPetController(context.read(), context.read())),
+            create: (context) => AddPetController(
+                context.read(), context.read(), context.read())),
         Provider(create: (_) => AddPetValidatorController()),
         Provider(create: (_) => AddPostValidatorController()),
         Provider(create: (_) => AddPostService()),
@@ -50,6 +54,10 @@ class MyApp extends StatelessWidget {
                 context.read(), context.read(), context.read())),
         ChangeNotifierProvider(
             create: (context) => ProfileController(context.read())),
+        Provider(create: (_) => UpdateUserService()),
+        ChangeNotifierProvider(
+            create: (context) => EditUserController(
+                context.read(), context.read(), context.read())),
       ],
       child: MaterialApp.router(
         title: 'Pets App',

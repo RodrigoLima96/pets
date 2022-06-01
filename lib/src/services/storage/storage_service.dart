@@ -29,4 +29,24 @@ class StorageService {
 
     return downloadUrl;
   }
+
+  deletePhoto(String photoId, String childName) {
+    _storage.ref(childName).child(photoId).delete();
+  }
+
+  Future<String> uploadUserImageToStorage(
+    String childName,
+    Uint8List file,
+    String id,
+  ) async {
+    Reference ref = _storage.ref().child(childName).child(id);
+
+    UploadTask uploadTask = ref.putData(file);
+
+    TaskSnapshot snap = await uploadTask;
+
+    String downloadUrl = await snap.ref.getDownloadURL();
+
+    return downloadUrl;
+  }
 }

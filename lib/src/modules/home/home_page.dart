@@ -4,7 +4,8 @@ import 'package:pets/src/modules/home/pages.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final int index;
+  const HomePage({Key? key, required this.index}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    pageController = PageController(initialPage: 2);
+    pageController = PageController(initialPage: widget.index);
     setState(() {});
   }
 
