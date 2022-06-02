@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pets/src/modules/add/addPet/add_pet_page.dart';
-import 'package:pets/src/modules/auth/login/login_page.dart';
-import 'package:pets/src/modules/auth/signup/sign_up_page.dart';
-import 'package:pets/src/modules/auth/welcome/welcome_page.dart';
-import 'package:pets/src/modules/home/home_page.dart';
+import 'package:pets/src/modules/add/pages/addPet/add_pet_page.dart';
+import 'package:pets/src/modules/auth/pages/login/login_page.dart';
+import 'package:pets/src/modules/auth/pages/signup/sign_up_page.dart';
+import 'package:pets/src/modules/auth/pages/welcome/welcome_page.dart';
+import 'package:pets/src/modules/home/pages/home/home_page.dart';
 import 'package:pets/src/routes/router_utils.dart';
 
 class AppRouter {

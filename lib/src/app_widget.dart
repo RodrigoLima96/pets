@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/add/add/controllers/add_controller.dart';
-import 'package:pets/src/modules/add/addPet/controllers/add_pet_controller.dart';
-import 'package:pets/src/modules/add/addPet/controllers/add_pet_validator_controller.dart';
-import 'package:pets/src/modules/add/addPost/controllers/add_post_controller.dart';
-import 'package:pets/src/modules/add/addPost/controllers/add_post_validator_controller.dart';
-import 'package:pets/src/modules/auth/login/controllers/login_validator_controller.dart';
-import 'package:pets/src/modules/auth/signup/controllers/sign_up_validador_controller.dart';
+import 'package:pets/src/modules/add/controllers/add_controller.dart';
+import 'package:pets/src/modules/add/controllers/add_pet_controller.dart';
+import 'package:pets/src/modules/profile/controllers/edit_user_controller.dart';
+import 'package:pets/src/modules/add/controllers/add_post_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
-import 'package:pets/src/modules/profile/profile/controllers/profile_controller.dart';
-import 'package:pets/src/modules/profile/settings/edit_profile/controllers/edit_user_controller.dart';
+import 'package:pets/src/modules/profile/controllers/profile_controller.dart';
 import 'package:pets/src/routes/app_router.dart';
-import 'package:pets/src/services/add/add_pet_service.dart';
-import 'package:pets/src/services/add/add_post_service.dart';
-import 'package:pets/src/services/auth/login_service.dart';
-import 'package:pets/src/services/auth/sign_up_service.dart';
-import 'package:pets/src/services/pet/get_pets_service.dart';
+import 'package:pets/src/services/auth/auth_service.dart';
+import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:pets/src/services/storage/storage_service.dart';
-import 'package:pets/src/services/user/update_user_service.dart';
+import 'package:pets/src/shared/utils/validator.dart';
 import 'package:provider/provider.dart';
-import 'modules/auth/login/controllers/login_controller.dart';
-import 'modules/auth/signup/controllers/sign_up_controller.dart';
+import 'modules/auth/controllers/login_controller.dart';
+import 'modules/auth/controllers/sign_up_controller.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -29,32 +22,25 @@ class MyApp extends StatelessWidget {
     AppRouter _appRouter = AppRouter();
     return MultiProvider(
       providers: [
-        Provider(create: (_) => SignUpService()),
+        Provider(create: (_) => AuthService()),
+        Provider(create: (_) => FirestoreService()),
+        Provider(create: (_) => Validator()),
         ChangeNotifierProvider(
             create: (context) => SignUpController(context.read())),
-        Provider(create: (_) => SignUpValidatorController()),
-        Provider(create: (_) => LoginService()),
         ChangeNotifierProvider(
             create: (context) => LoginController(context.read())),
-        Provider(create: (_) => LoginValidatorController()),
-        Provider(create: (_) => GetPetsService()),
         ChangeNotifierProvider(
             create: (context) => AddController(context.read())),
         ChangeNotifierProvider(create: (context) => FeedController()),
-        Provider(create: (_) => AddPetService()),
         Provider(create: (_) => StorageService()),
         ChangeNotifierProvider(
             create: (context) => AddPetController(
                 context.read(), context.read(), context.read())),
-        Provider(create: (_) => AddPetValidatorController()),
-        Provider(create: (_) => AddPostValidatorController()),
-        Provider(create: (_) => AddPostService()),
         ChangeNotifierProvider(
             create: (context) => AddPostController(
                 context.read(), context.read(), context.read())),
         ChangeNotifierProvider(
             create: (context) => ProfileController(context.read())),
-        Provider(create: (_) => UpdateUserService()),
         ChangeNotifierProvider(
             create: (context) => EditUserController(
                 context.read(), context.read(), context.read())),

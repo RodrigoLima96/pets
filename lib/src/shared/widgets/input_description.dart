@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/add/addPost/controllers/add_post_validator_controller.dart';
+import 'package:pets/src/shared/utils/validator.dart';
 
 class InputDescription extends StatelessWidget {
   final Size size;
   final TextEditingController descriptionController;
-  final AddPostValidatorController _validadorController;
   final double padding;
+  final Validator validator;
   const InputDescription({
     Key? key,
     required this.size,
     required this.descriptionController,
-    required AddPostValidatorController validadorController,
     required this.padding,
-  })  : _validadorController = validadorController,
-        super(key: key);
+    required this.validator,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class InputDescription extends StatelessWidget {
         ),
         maxLines: 4,
         validator: (value) {
-          return _validadorController.descriptionValidator(value!);
+          return validator.descriptionValidator(value!);
         },
       ),
     );

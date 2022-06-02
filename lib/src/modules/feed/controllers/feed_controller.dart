@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pets/src/shared/models/post.dart' as model;
+import 'package:pets/src/models/post.dart' as model;
 
 enum FeedState { idle, loading, success, error }
 
