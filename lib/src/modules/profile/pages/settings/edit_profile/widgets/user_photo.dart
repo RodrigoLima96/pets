@@ -5,12 +5,12 @@ import 'package:pets/src/shared/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 class UserPhoto extends StatefulWidget {
+  final String photoUrl;
+
   const UserPhoto({
     Key? key,
     required this.photoUrl,
   }) : super(key: key);
-
-  final String photoUrl;
 
   @override
   State<UserPhoto> createState() => _UserPhotoState();
@@ -23,17 +23,14 @@ class _UserPhotoState extends State<UserPhoto> {
 
     return Stack(
       children: [
-        controller.image == null
-            ? CircleAvatar(
-                radius: 60,
-                backgroundImage: NetworkImage(
+        CircleAvatar(
+          radius: 60,
+          backgroundImage: controller.image == null
+              ? NetworkImage(
                   widget.photoUrl,
-                ),
-              )
-            : CircleAvatar(
-                radius: 60,
-                backgroundImage: MemoryImage(controller.image!),
-              ),
+                )
+              : MemoryImage(controller.image!) as ImageProvider,
+        ),
         Positioned(
           bottom: -15,
           child: IconButton(

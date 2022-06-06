@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/add/pages/addPet/widgets/add_pet_button.dart';
-import 'package:pets/src/modules/add/pages/addPet/widgets/add_pet_form.dart';
+import 'package:pets/src/modules/add/pages/addPet/widgets/pet_form.dart';
 import 'package:pets/src/modules/add/pages/addPet/widgets/pet_photo.dart';
 
 class AddPetBody extends StatefulWidget {
@@ -43,7 +43,7 @@ class _AddPetBodyState extends State<AddPetBody> {
           children: [
             PetPhoto(size: size, photo: widget.image),
             const SizedBox(height: 20),
-            AddPetForm(
+            PetForm(
               formKey: _formKey,
               size: size,
               nameController: nameController,
