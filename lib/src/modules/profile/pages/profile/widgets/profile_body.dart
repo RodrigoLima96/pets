@@ -8,15 +8,15 @@ import 'package:pets/src/modules/profile/pages/profile/widgets/settings_and_noti
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:provider/provider.dart';
 
-class ProfileBody extends StatefulWidget {
+class EditPet extends StatefulWidget {
   final String uid;
-  const ProfileBody({Key? key, required this.uid}) : super(key: key);
+  const EditPet({Key? key, required this.uid}) : super(key: key);
 
   @override
-  State<ProfileBody> createState() => _ProfileBodyState();
+  State<EditPet> createState() => _EditPetState();
 }
 
-class _ProfileBodyState extends State<ProfileBody> {
+class _EditPetState extends State<EditPet> {
   @override
   void initState() {
     super.initState();
@@ -46,6 +46,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                       SettingsAndNotifications(
                         notifications: 3,
                         user: controller.user,
+                        pets: controller.petsList,
                       ),
                       ProfileUserInfo(user: controller.user),
                     ],

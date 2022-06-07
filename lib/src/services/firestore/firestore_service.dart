@@ -84,6 +84,48 @@ class FirestoreService {
     return status;
   }
 
+  Future<String> updatePet(
+    String uid,
+    String petId,
+    String petName,
+    double petWeight,
+    int petAge,
+    String? newPhotoUrl,
+  ) async {
+    String status = '';
+    try {
+      if (newPhotoUrl != null) {
+        _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('pets')
+            .doc(petId)
+            .update({
+          'petName': petName,
+          'photoUrl': newPhotoUrl,
+          'weight': petWeight,
+          'age': petAge,
+        });
+      } else {
+        _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('pets')
+            .doc(petId)
+            .update({
+          'petName': petName,
+          'weight': petWeight,
+          'age': petAge,
+        });
+      }
+
+      status = 'success';
+    } catch (error) {
+      status = error.toString();
+    }
+    return status;
+  }
+
   Future<model.User> getCurrentUserDetails(String uid) async {
     User currentUser = FirebaseAuth.instance.currentUser!;
 

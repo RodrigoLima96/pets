@@ -11,7 +11,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBlack,
-      body: ProfileBody(uid: uid),
+      body: EditPet(uid: uid),
     );
   }
 }

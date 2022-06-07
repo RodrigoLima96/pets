@@ -1,20 +1,22 @@
 import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
+
 import 'package:pets/src/modules/profile/controllers/profile_controller.dart';
 import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:pets/src/services/storage/storage_service.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 
-enum EditUserState { idle, loading, success, error }
+enum EditPetState { idle, loading, success, error }
 
-class EditUserController extends ChangeNotifier {
+class EditPetController extends ChangeNotifier {
   Uint8List? image;
   final FirestoreService _firestoreService;
   final StorageService _storageService;
   final ProfileController _profileController;
-  var state = EditUserState.idle;
+  var state = EditPetState.idle;
 
-  EditUserController(
+  EditPetController(
     this._firestoreService,
     this._storageService,
     this._profileController,
@@ -30,27 +32,33 @@ class EditUserController extends ChangeNotifier {
     notifyListeners();
   }
 
-  updateUser(
+  updatePet(
     String uid,
-    String name,
+    String petId,
+    String petName,
+    double petWeight,
+    int petAge,
   ) async {
-    state = EditUserState.loading;
+    state = EditPetState.loading;
     notifyListeners();
     try {
       String photoUrl = '';
       if (image != null) {
-        _storageService.deleteUserPhoto(uid, 'users');
-        photoUrl = await _storageService.uploadUserImageToStorage(
-            'users', image!, uid);
-        _firestoreService.updateUser(uid, name, photoUrl);
+        _storageService.deletePetPhoto('pets', uid, petId);
+        photoUrl = await _storageService.uploadImageToStorage(
+            'pets', petId, image!, false);
+
+        _firestoreService.updatePet(
+            uid, petId, petName, petWeight, petAge, photoUrl);
       } else {
-        await _firestoreService.updateUser(uid, name, null);
+        await _firestoreService.updatePet(
+            uid, petId, petName, petWeight, petAge, null);
       }
       await _profileController.loadUserInfo(uid);
-      state = EditUserState.success;
+      state = EditPetState.success;
       notifyListeners();
     } catch (error) {
-      state = EditUserState.error;
+      state = EditPetState.error;
       notifyListeners();
     }
   }

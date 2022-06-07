@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/add/controllers/add_controller.dart';
 import 'package:pets/src/modules/add/controllers/add_pet_controller.dart';
+import 'package:pets/src/modules/profile/controllers/edit_pet_controller.dart';
 import 'package:pets/src/modules/profile/controllers/edit_user_controller.dart';
 import 'package:pets/src/modules/add/controllers/add_post_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
             create: (context) => ProfileController(context.read())),
         ChangeNotifierProvider(
             create: (context) => EditUserController(
+                context.read(), context.read(), context.read())),
+        ChangeNotifierProvider(
+            create: (context) => EditPetController(
                 context.read(), context.read(), context.read())),
       ],
       child: MaterialApp.router(

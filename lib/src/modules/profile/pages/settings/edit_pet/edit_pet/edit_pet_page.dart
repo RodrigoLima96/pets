@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pets/src/modules/profile/pages/settings/edit_pet/widgets/edit_pet_body.dart';
+import 'package:pets/src/models/pet.dart';
+import 'package:pets/src/modules/profile/pages/settings/edit_pet/edit_pet/widgets/edit_pet_body.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
 class EditPetPage extends StatelessWidget {
-  const EditPetPage({Key? key}) : super(key: key);
+  final Pet pet;
+  const EditPetPage({Key? key, required this.pet}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class EditPetPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kBlack,
       ),
-      body: const EditPetBody(),
+      body: EditPetBody(pet: pet),
     );
   }
 }

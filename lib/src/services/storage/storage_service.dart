@@ -30,8 +30,16 @@ class StorageService {
     return downloadUrl;
   }
 
-  deletePhoto(String photoId, String childName) {
+  deleteUserPhoto(String photoId, String childName) {
     _storage.ref(childName).child(photoId).delete();
+  }
+
+  deletePetPhoto(
+    String childName,
+    String userId,
+    String petId,
+  ) {
+    _storage.ref(childName).child(userId).child(petId).delete();
   }
 
   Future<String> uploadUserImageToStorage(

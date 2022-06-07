@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/models/pet.dart';
+import 'package:pets/src/modules/profile/pages/settings/edit_pet/petsList/edit_pets_list_page.dart';
 import 'package:pets/src/modules/profile/pages/settings/edit_profile/edit_profile_page.dart';
 import 'package:pets/src/models/user.dart' as model;
 import 'package:pets/src/modules/profile/pages/settings/settings/widgets/logout_button.dart';
@@ -6,7 +8,9 @@ import 'package:pets/src/modules/profile/pages/settings/settings/widgets/setting
 
 class SettingsBody extends StatelessWidget {
   final model.User user;
-  const SettingsBody({Key? key, required this.user}) : super(key: key);
+  final List<Pet> pets;
+  const SettingsBody({Key? key, required this.user, required this.pets})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,12 @@ class SettingsBody extends StatelessWidget {
             size: size,
             text: 'Edit Pets',
             icon: 'assets/icons/pet.svg',
-            function: () {},
+            function: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => EditPetsListPage(pets: pets)));
+            },
           ),
           LogoutButton(size: size),
         ],
