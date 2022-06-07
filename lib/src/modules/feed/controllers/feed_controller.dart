@@ -1,54 +1,26 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pets/src/models/post.dart' as model;
+import 'package:pets/src/services/firestore/firestore_service.dart';
+import 'package:pets/src/shared/utils/constants.dart';
 
 enum FeedState { idle, loading, success, error }
 
 class FeedController extends ChangeNotifier {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirestoreService _firestoreService;
   var state = FeedState.idle;
   List<model.Post> posts = [];
 
-  FeedController() {
+  FeedController(this._firestoreService) {
     getPosts(0);
   }
 
-  getPosts(int type) async {
+  getPosts(int index) async {
     state = FeedState.loading;
     notifyListeners();
-    QuerySnapshot snap;
+    String type = petType[index];
 
     try {
-      switch (type) {
-        case 0:
-          snap = await _firestore.collection('posts').get();
-          break;
-        case 1:
-          snap = await _firestore
-              .collection('posts')
-              .where('type', isEqualTo: 'dog')
-              .get();
-          break;
-        case 2:
-          snap = await _firestore
-              .collection('posts')
-              .where('type', isEqualTo: 'cat')
-              .get();
-          break;
-        case 3:
-          snap = await _firestore
-              .collection('posts')
-              .where('type', isEqualTo: 'bird')
-              .get();
-          break;
-
-        default:
-          snap = await _firestore.collection('posts').get();
-      }
-      posts = [];
-      for (var post in snap.docs) {
-        posts.add(model.Post.fromFirestore(post));
-      }
+      posts = await _firestoreService.getPosts(type);
 
       state = FeedState.success;
       notifyListeners();

@@ -44,6 +44,7 @@ class UpdatePetButton extends StatelessWidget {
                       Navigator.pop(context);
                       Navigator.pop(context);
                       Navigator.pop(context);
+                      controller.clearImage();
                     }
                   });
                 }

@@ -1,11 +1,54 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pets/src/models/comment.dart';
 import 'package:pets/src/models/pet.dart';
+import 'package:pets/src/models/post.dart';
 import 'package:pets/src/models/user.dart' as model;
 
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<List<Post>> getPosts(String type) async {
+    QuerySnapshot snap;
+    List<Post> posts = [];
+    try {
+      if (type == 'all') {
+        snap = await _firestore.collection('posts').get();
+      } else {
+        snap = await _firestore
+            .collection('posts')
+            .where('type', isEqualTo: type)
+            .get();
+      }
+
+      for (var post in snap.docs) {
+        posts.add(Post.fromFirestore(post));
+      }
+    } catch (error) {
+      debugPrint(error.toString());
+    }
+    return posts;
+  }
+
+  Future<List<Comment>> getPostCommets(String postId) async {
+    QuerySnapshot snap;
+    List<Comment> comments = [];
+    try {
+      snap = await _firestore
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .get();
+
+      for (var post in snap.docs) {
+        comments.add(Comment.fromFirestore(post));
+      }
+    } catch (error) {
+      debugPrint(error.toString());
+    }
+    return comments;
+  }
 
   Future<String> addNewPet(
       Map<String, dynamic> pets, String uid, String petId) async {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/post.dart';
+import 'package:pets/src/modules/feed/pages/post/widgets/bottom_navigation.dart';
 import 'package:pets/src/modules/feed/pages/post/widgets/post_body.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
@@ -15,6 +16,7 @@ class PostPage extends StatelessWidget {
         backgroundColor: kBlack,
       ),
       body: PostBody(post: post),
+      bottomNavigationBar: const PostBottomNavigation(),
     );
   }
 }

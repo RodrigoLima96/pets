@@ -4,10 +4,12 @@ import 'package:pets/src/shared/utils/constants.dart';
 class UserPetsAvatar extends StatelessWidget {
   final String petPhoto;
   final String petName;
+  final double imageRadius;
   const UserPetsAvatar({
     Key? key,
     required this.petPhoto,
     required this.petName,
+    required this.imageRadius,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class UserPetsAvatar extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            radius: 30,
+            radius: imageRadius,
             backgroundImage: NetworkImage(
               petPhoto,
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/add/controllers/add_controller.dart';
 import 'package:pets/src/modules/add/controllers/add_pet_controller.dart';
+import 'package:pets/src/modules/feed/controllers/post_controller.dart';
 import 'package:pets/src/modules/profile/controllers/edit_pet_controller.dart';
 import 'package:pets/src/modules/profile/controllers/edit_user_controller.dart';
 import 'package:pets/src/modules/add/controllers/add_post_controller.dart';
@@ -32,7 +33,10 @@ class MyApp extends StatelessWidget {
             create: (context) => LoginController(context.read())),
         ChangeNotifierProvider(
             create: (context) => AddController(context.read())),
-        ChangeNotifierProvider(create: (context) => FeedController()),
+        ChangeNotifierProvider(
+            create: (context) => FeedController(context.read())),
+        ChangeNotifierProvider(
+            create: (context) => PostController(context.read())),
         Provider(create: (_) => StorageService()),
         ChangeNotifierProvider(
             create: (context) => AddPetController(

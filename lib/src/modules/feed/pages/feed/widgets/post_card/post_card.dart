@@ -3,6 +3,7 @@ import 'package:pets/src/models/post.dart' as model;
 import 'package:pets/src/modules/feed/pages/post/post_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/list_images.dart';
+import 'package:pets/src/modules/feed/pages/feed/widgets/post_card/pets_info.dart';
 
 class PostCard extends StatefulWidget {
   final Size size;
@@ -25,33 +26,8 @@ class _PostCardState extends State<PostCard> {
         width: widget.size.width,
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: kDefaultPadding / 2,
-                horizontal: 15,
-              ),
-              width: widget.size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.post.days > 1
-                            ? '${widget.post.days.toString()} days'
-                            : '${widget.post.days.toString()} day',
-                        style: textStyle,
-                      ),
-                    ],
-                  ),
-                  Text(
-                    price.format(widget.post.price),
-                    style: textStyle,
-                  ),
-                ],
-              ),
-            ),
+            PetsInfo(
+                pets: widget.post.pets, size: widget.size, imageRadius: 12),
             GestureDetector(
               child: ListImages(pets: widget.post.pets, size: widget.size),
               onTap: () {
@@ -67,20 +43,9 @@ class _PostCardState extends State<PostCard> {
                 vertical: kDefaultPadding / 2,
                 horizontal: 15,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    date.format(widget.post.datePublished),
-                    style: textStyle,
-                  ),
-                  Text(
-                    widget.post.pets.length > 1
-                        ? '${widget.post.pets.length.toString()} Pets'
-                        : '${widget.post.pets.length.toString()} Pet',
-                    style: textStyle,
-                  ),
-                ],
+              child: Text(
+                date.format(widget.post.datePublished),
+                style: textStyle,
               ),
             ),
           ],

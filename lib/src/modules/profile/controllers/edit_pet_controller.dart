@@ -29,7 +29,6 @@ class EditPetController extends ChangeNotifier {
 
   clearImage() {
     image = null;
-    notifyListeners();
   }
 
   updatePet(

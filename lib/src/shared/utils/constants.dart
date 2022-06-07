@@ -37,3 +37,10 @@ final List<Map<String, dynamic>> genderItems = [
     'label': 'female',
   },
 ];
+
+List<String> petType = [
+  'all',
+  'dog',
+  'cat',
+  'bird',
+];

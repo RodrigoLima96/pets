@@ -14,7 +14,6 @@ class ProfileUserInfo extends StatelessWidget {
     return UserInfo(
       userPhoto: user.photoUrl!,
       username: user.name,
-      rating: user.rating,
       imageSize: 60,
     );
   }

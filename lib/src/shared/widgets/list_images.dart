@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/pet.dart';
-import 'package:pets/src/modules/feed/pages/feed/widgets/post_card/box_text.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -52,7 +51,6 @@ class _ListImageState extends State<ListImages> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    BoxText(text: widget.pets[index].petName),
                   ],
                 ),
               );
