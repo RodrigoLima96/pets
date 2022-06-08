@@ -26,13 +26,15 @@ class _ListPostCommentsState extends State<ListPostComments> {
   Widget build(BuildContext context) {
     var controller = context.watch<PostController>();
 
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemCount: controller.comments.length,
-        itemBuilder: (context, index) {
-          return CommentCard(comment: controller.comments[index]);
-        });
+    return controller.commentsState == PostState.loading
+        ? const Center(child: CircularProgressIndicator())
+        : ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: controller.comments.length,
+            itemBuilder: (context, index) {
+              return CommentCard(comment: controller.comments[index]);
+            });
   }
 }

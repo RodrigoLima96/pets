@@ -84,6 +84,47 @@ class FirestoreService {
     return status;
   }
 
+  Future<String> addComment(
+    String postId,
+    Map<String, dynamic> comment,
+    String commentId,
+  ) async {
+    String status = '';
+
+    try {
+      _firestore
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .set(comment);
+      status = 'success';
+    } catch (error) {
+      status = error.toString();
+    }
+    return status;
+  }
+
+  Future<String> deleteComment(
+    String postId,
+    String commentId,
+  ) async {
+    String status = '';
+
+    try {
+      _firestore
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .delete();
+      status = 'success';
+    } catch (error) {
+      status = error.toString();
+    }
+    return status;
+  }
+
   Future<List<Pet>> getPets(String uid, String collectionName) async {
     QuerySnapshot snap;
     List<Pet> pets = [];
@@ -169,7 +210,7 @@ class FirestoreService {
     return status;
   }
 
-  Future<model.User> getCurrentUserDetails(String uid) async {
+  Future<model.User> getCurrentUserDetails() async {
     User currentUser = FirebaseAuth.instance.currentUser!;
 
     DocumentSnapshot snap = await FirebaseFirestore.instance

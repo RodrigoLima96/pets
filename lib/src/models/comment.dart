@@ -9,6 +9,7 @@ class Comment {
   final String photoUrl;
   final String username;
   final String comment;
+  final String commentId;
 
   Comment({
     required this.uid,
@@ -17,16 +18,18 @@ class Comment {
     required this.photoUrl,
     required this.username,
     required this.comment,
+    required this.commentId,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
       'postId': postId,
-      'datePublished': datePublished.millisecondsSinceEpoch,
+      'datePublished': datePublished,
       'photoUrl': photoUrl,
       'username': username,
       'comment': comment,
+      'commentId': commentId,
     };
   }
 
@@ -40,6 +43,7 @@ class Comment {
       photoUrl: map['photoUrl'] ?? '',
       username: map['username'] ?? '',
       comment: map['comment'] ?? '',
+      commentId: map['commentId'] ?? '',
     );
   }
 

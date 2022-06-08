@@ -96,4 +96,11 @@ class Validator {
     }
     return null;
   }
+
+  String? commentValidator(String value) {
+    if (value.isEmpty) {
+      return 'Enter your comment';
+    }
+    return null;
+  }
 }

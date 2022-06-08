@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/comment.dart';
+import 'package:pets/src/modules/feed/pages/post/widgets/comments/delete_comment_button.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
 class CommentCard extends StatelessWidget {
@@ -34,7 +35,7 @@ class CommentCard extends StatelessWidget {
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: comment.comment,
+                          text: ' ${comment.comment}',
                         ),
                       ],
                     ),
@@ -48,6 +49,9 @@ class CommentCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
+                  ),
+                  DeleteCommentButton(
+                    comment: comment,
                   )
                 ],
               ),
