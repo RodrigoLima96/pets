@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => FeedController(context.read())),
         ChangeNotifierProvider(
-            create: (context) => PostController(context.read())),
+            create: (context) =>
+                PostController(context.read(), context.read())),
         Provider(create: (_) => StorageService()),
         ChangeNotifierProvider(
             create: (context) => AddPetController(

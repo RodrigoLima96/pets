@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pets/src/models/comment.dart' as model;
+import 'package:pets/src/models/post.dart';
 import 'package:pets/src/models/user.dart' as model;
+import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
 import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:uuid/uuid.dart';
 
@@ -8,12 +10,13 @@ enum PostState { idle, loading, success, error }
 
 class PostController extends ChangeNotifier {
   final FirestoreService _firestoreService;
+  final FeedController _feedController;
   var commentsState = PostState.idle;
   var postCommentState = PostState.idle;
   List<model.Comment> comments = [];
   String uid = '';
 
-  PostController(this._firestoreService);
+  PostController(this._firestoreService, this._feedController);
 
   getComments(String postId) async {
     commentsState = PostState.loading;
@@ -76,6 +79,23 @@ class PostController extends ChangeNotifier {
       await _firestoreService.deleteComment(comment.postId, comment.commentId);
 
       comments.remove(comment);
+      postCommentState = PostState.success;
+      notifyListeners();
+    } catch (error) {
+      postCommentState = PostState.error;
+      notifyListeners();
+    }
+  }
+
+  deletePost(
+    Post post,
+  ) async {
+    postCommentState = PostState.loading;
+    notifyListeners();
+
+    try {
+      await _firestoreService.deletePost(post.postId);
+      _feedController.removePost(post);
       postCommentState = PostState.success;
       notifyListeners();
     } catch (error) {

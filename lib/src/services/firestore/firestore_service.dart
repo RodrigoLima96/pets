@@ -125,6 +125,20 @@ class FirestoreService {
     return status;
   }
 
+  Future<String> deletePost(
+    String postId,
+  ) async {
+    String status = '';
+
+    try {
+      _firestore.collection('posts').doc(postId).delete();
+      status = 'success';
+    } catch (error) {
+      status = error.toString();
+    }
+    return status;
+  }
+
   Future<List<Pet>> getPets(String uid, String collectionName) async {
     QuerySnapshot snap;
     List<Pet> pets = [];

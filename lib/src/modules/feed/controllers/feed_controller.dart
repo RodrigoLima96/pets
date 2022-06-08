@@ -32,5 +32,10 @@ class FeedController extends ChangeNotifier {
     state = FeedState.idle;
     return posts;
   }
+
+  removePost(model.Post post) {
+    posts.remove(post);
+    notifyListeners();
+  }
 }
 //
