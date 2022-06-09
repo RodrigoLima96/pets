@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:pets/src//models/user.dart' as model;
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<String> loginUser({
     required String email,
@@ -24,34 +22,23 @@ class AuthService {
     return response;
   }
 
-  Future<String> signUpUser({
+  Future<dynamic> signUpUser({
     required String email,
     required String password,
     required String name,
   }) async {
-    String response = 'Error';
     try {
       UserCredential credential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      model.User user = model.User(
-        uid: credential.user!.uid,
-        name: name,
-        email: email,
-        rating: 0.0,
-      );
-
-      await _firestore
-          .collection('users')
-          .doc(credential.user!.uid)
-          .set(user.toMap());
-
-      response = 'success';
+      return credential;
     } catch (error) {
-      response = error.toString();
+      debugPrint(error.toString());
     }
-    return response;
+  }
+
+  logout() async {
+    _auth.signOut();
   }
 }

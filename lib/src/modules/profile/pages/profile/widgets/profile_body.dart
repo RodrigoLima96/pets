@@ -3,7 +3,7 @@ import 'package:pets/src/modules/profile/controllers/profile_controller.dart';
 import 'package:pets/src/modules/profile/pages/profile/widgets/list_name.dart';
 import 'package:pets/src/shared/widgets/pets_list.dart';
 import 'package:pets/src/modules/profile/pages/profile/widgets/profile_user_info.dart';
-import 'package:pets/src/modules/profile/pages/profile/widgets/settings_and_notification.dart';
+import 'package:pets/src/modules/profile/pages/profile/widgets/settings.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +42,7 @@ class _EditPetState extends State<EditPet> {
                 children: [
                   Stack(
                     children: [
-                      SettingsAndNotifications(
+                      Settings(
                         notifications: 3,
                         user: controller.user,
                         pets: controller.petsList,

@@ -7,14 +7,12 @@ class User {
   final String name;
   final String email;
   final String? photoUrl;
-  final double rating;
 
   User({
     required this.uid,
     required this.name,
     required this.email,
     this.photoUrl,
-    required this.rating,
   });
 
   Map<String, dynamic> toMap() {
@@ -23,7 +21,6 @@ class User {
       'name': name,
       'email': email,
       'photoUrl': photoUrl,
-      'rating': rating,
     };
   }
 
@@ -34,7 +31,6 @@ class User {
       uid: map['uid'] ?? '',
       name: map['name'] ?? '',
       email: map['email'] ?? '',
-      rating: map['rating'] ?? '',
       photoUrl: map['photoUrl'] ??
           'https://i.pinimg.com/564x/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
     );

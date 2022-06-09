@@ -1,13 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pets/src/models/user.dart' as model;
 import 'package:pets/src/services/auth/auth_service.dart';
+import 'package:pets/src/services/firestore/firestore_service.dart';
 
 enum SignUpState { idle, loading, success, error }
 
 class SignUpController extends ChangeNotifier {
   final AuthService _authService;
+  final FirestoreService _firestoreService;
   var state = SignUpState.idle;
 
-  SignUpController(this._authService);
+  SignUpController(this._authService, this._firestoreService);
 
   Future<void> signUpUser({
     required String email,
@@ -17,13 +21,20 @@ class SignUpController extends ChangeNotifier {
     state = SignUpState.loading;
     notifyListeners();
 
-    final String response = await _authService.signUpUser(
-        email: email, password: password, name: name);
+    try {
+      UserCredential credential = await _authService.signUpUser(
+          email: email, password: password, name: name);
 
-    if (response == 'success') {
+      model.User user = model.User(
+        uid: credential.user!.uid,
+        name: name,
+        email: email,
+      );
+
+      _firestoreService.signUpUser(user.uid, user.toMap());
       state = SignUpState.success;
       notifyListeners();
-    } else {
+    } catch (error) {
       state = SignUpState.error;
       notifyListeners();
     }

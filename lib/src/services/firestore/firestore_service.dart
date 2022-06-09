@@ -234,4 +234,17 @@ class FirestoreService {
 
     return model.User.fromMap(snap);
   }
+
+  Future<String> signUpUser(String uid, Map<String, dynamic> user) async {
+    String status = '';
+
+    try {
+      await FirebaseFirestore.instance.collection('users').doc(uid).set(user);
+      status = 'success';
+    } catch (error) {
+      status = 'error';
+    }
+
+    return status;
+  }
 }

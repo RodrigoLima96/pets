@@ -6,6 +6,7 @@ import 'package:pets/src/modules/profile/controllers/edit_pet_controller.dart';
 import 'package:pets/src/modules/profile/controllers/edit_user_controller.dart';
 import 'package:pets/src/modules/add/controllers/add_post_controller.dart';
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
+import 'package:pets/src/modules/profile/controllers/logout_controller.dart';
 import 'package:pets/src/modules/profile/controllers/profile_controller.dart';
 import 'package:pets/src/routes/app_router.dart';
 import 'package:pets/src/services/auth/auth_service.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
         Provider(create: (_) => FirestoreService()),
         Provider(create: (_) => Validator()),
         ChangeNotifierProvider(
-            create: (context) => SignUpController(context.read())),
+            create: (context) =>
+                SignUpController(context.read(), context.read())),
         ChangeNotifierProvider(
             create: (context) => LoginController(context.read())),
         ChangeNotifierProvider(
@@ -53,6 +55,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => EditPetController(
                 context.read(), context.read(), context.read())),
+        Provider(create: (_) => LogoutController(context.read())),
       ],
       child: MaterialApp.router(
         title: 'Pets App',
