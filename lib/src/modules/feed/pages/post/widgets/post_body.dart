@@ -20,7 +20,11 @@ class PostBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            ListImages(pets: post.pets, size: size),
+            ListImages(
+              images: post.petsPhotosUrl,
+              listLength: post.petsPhotosUrl.length,
+              size: size,
+            ),
             const SizedBox(height: 10),
             PetsList(size: size, pets: post.pets, imageRadius: 20),
             Padding(

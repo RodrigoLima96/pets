@@ -23,7 +23,7 @@ class EditPetController extends ChangeNotifier {
   );
 
   addImage() async {
-    image = await pickImage();
+    image = await pickImage(multImages: false);
     notifyListeners();
   }
 
@@ -44,8 +44,8 @@ class EditPetController extends ChangeNotifier {
       String photoUrl = '';
       if (image != null) {
         _storageService.deletePetPhoto('pets', uid, petId);
-        photoUrl = await _storageService.uploadImageToStorage(
-            'pets', petId, image!, false);
+        photoUrl = await _storageService.uploadPetImageToStorage(
+            'pets', petId, image!);
 
         _firestoreService.updatePet(
             uid, petId, petName, petWeight, petAge, photoUrl);

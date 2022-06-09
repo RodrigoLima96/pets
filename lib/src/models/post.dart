@@ -8,12 +8,10 @@ class Post {
   final List<Pet> pets;
   final String description;
   final DateTime datePublished;
-  final double price;
-  final int days;
   final String username;
   final String userPhotoUrl;
+  final List<String> petsPhotosUrl;
   final String type;
-  final double rating;
 
   Post({
     required this.postId,
@@ -21,12 +19,10 @@ class Post {
     required this.pets,
     required this.description,
     required this.datePublished,
-    required this.price,
-    required this.days,
     required this.username,
     required this.userPhotoUrl,
+    required this.petsPhotosUrl,
     required this.type,
-    required this.rating,
   });
 
   Map<String, dynamic> toMap() {
@@ -36,12 +32,10 @@ class Post {
       'pets': pets.map((x) => x.toMap()).toList(),
       'description': description,
       'datePublished': datePublished,
-      'price': price,
-      'days': days,
       'username': username,
       'userPhotoUrl': userPhotoUrl,
+      'petsPhotosUrl': petsPhotosUrl,
       'type': type,
-      'rating': rating,
     };
   }
 
@@ -54,12 +48,10 @@ class Post {
       pets: List<Pet>.from(map['pets']?.map((x) => Pet.fromMap(x))),
       description: map['description'] ?? '',
       datePublished: map['datePublished'].toDate() ?? '',
-      price: map['price'].toDouble() ?? 0.0,
-      days: map['days'].toInt() ?? 0,
       username: map['username'] ?? '',
       userPhotoUrl: map['userPhotoUrl'] ?? '',
+      petsPhotosUrl: List<String>.from(map['petsPhotosUrl']),
       type: map['type'] ?? '',
-      rating: map['rating'].toDouble() ?? 0.0,
     );
   }
 

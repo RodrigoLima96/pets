@@ -7,19 +7,13 @@ class StorageService {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   // add image to firebase storage
-  Future<String> uploadImageToStorage(
+  Future<String> uploadPetImageToStorage(
     String childName,
     String petId,
     Uint8List file,
-    bool isPost,
   ) async {
     final String uid = getUserUid();
     Reference ref = _storage.ref().child(childName).child(uid).child(petId);
-
-    if (isPost) {
-      String id = const Uuid().v1();
-      ref = ref.child(id);
-    }
 
     UploadTask uploadTask = ref.putData(file);
 
@@ -56,5 +50,23 @@ class StorageService {
     String downloadUrl = await snap.ref.getDownloadURL();
 
     return downloadUrl;
+  }
+
+  Future<List<String>> uploadPostImagesToStorage(
+    List<Uint8List> images,
+    String uid,
+  ) async {
+    List<String> imagesUrl = [];
+    for (var image in images) {
+      String imageId = const Uuid().v1();
+
+      Reference ref = _storage.ref().child('posts').child(uid).child(imageId);
+
+      UploadTask uploadTask = ref.putData(image);
+      TaskSnapshot snap = await uploadTask;
+      imagesUrl.add(await snap.ref.getDownloadURL());
+    }
+
+    return imagesUrl;
   }
 }

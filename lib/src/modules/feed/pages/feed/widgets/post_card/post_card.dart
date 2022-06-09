@@ -29,7 +29,11 @@ class _PostCardState extends State<PostCard> {
             PetsInfo(
                 pets: widget.post.pets, size: widget.size, imageRadius: 12),
             GestureDetector(
-              child: ListImages(pets: widget.post.pets, size: widget.size),
+              child: ListImages(
+                images: widget.post.petsPhotosUrl,
+                listLength: widget.post.petsPhotosUrl.length,
+                size: widget.size,
+              ),
               onTap: () {
                 Navigator.push(
                     context,

@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             create: (context) => AddPetController(
                 context.read(), context.read(), context.read())),
         ChangeNotifierProvider(
-            create: (context) => AddPostController(
+            create: (context) => AddPostController(context.read(),
                 context.read(), context.read(), context.read())),
         ChangeNotifierProvider(
             create: (context) => ProfileController(context.read())),

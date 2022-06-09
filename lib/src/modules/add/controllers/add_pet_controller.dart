@@ -20,7 +20,7 @@ class AddPetController extends ChangeNotifier {
       this._firestoreService, this._addController, this._storageService);
 
   addImage() async {
-    image = await pickImage();
+    image = await pickImage(multImages: false);
     notifyListeners();
   }
 
@@ -43,8 +43,8 @@ class AddPetController extends ChangeNotifier {
       String petId = const Uuid().v1();
 
       final String uid = getUserUid();
-      String photoUrl = await _storageService.uploadImageToStorage(
-          'pets', petId, file, false);
+      String photoUrl =
+          await _storageService.uploadPetImageToStorage('pets', petId, file);
 
       Pet pet = Pet(
         petName: name,

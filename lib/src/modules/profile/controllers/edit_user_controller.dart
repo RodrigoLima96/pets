@@ -21,7 +21,7 @@ class EditUserController extends ChangeNotifier {
   );
 
   addImage() async {
-    image = await pickImage();
+    image = await pickImage(multImages: false);
     notifyListeners();
   }
 

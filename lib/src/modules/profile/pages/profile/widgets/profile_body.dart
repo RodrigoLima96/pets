@@ -37,7 +37,7 @@ class _EditPetState extends State<EditPet> {
         width: double.infinity,
         padding: EdgeInsets.only(top: size.height * 0.05),
         child: controller.state == ProfileState.loading
-            ? loading()
+            ? loadingWidget()
             : Column(
                 children: [
                   Stack(
