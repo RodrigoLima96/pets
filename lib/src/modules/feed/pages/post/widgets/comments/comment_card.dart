@@ -40,23 +40,24 @@ class CommentCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4),
-                    child: Text(
-                      date.format(comment.datePublished),
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
+                  Row(
+                    children: [
+                      Text(
+                        date.format(comment.datePublished),
+                        style: const TextStyle(
+                          fontSize: 10,
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  DeleteCommentButton(
-                    comment: comment,
-                  )
                 ],
               ),
             ),
           ),
+          DeleteCommentButton(
+            comment: comment,
+          )
         ],
       ),
     );

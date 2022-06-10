@@ -20,7 +20,7 @@ class DeleteCommentButton extends StatelessWidget {
             },
             icon: const Icon(
               Icons.delete,
-              size: 16,
+              size: 14,
               color: Colors.redAccent,
             ),
           )
