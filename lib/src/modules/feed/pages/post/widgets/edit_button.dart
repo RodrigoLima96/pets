@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/post.dart';
 import 'package:pets/src/modules/feed/controllers/post_controller.dart';
-import 'package:pets/src/shared/utils/methods.dart';
+import 'package:pets/src/modules/feed/pages/editPost/edit_post_page.dart';
+import 'package:pets/src/shared/utils/constants.dart';
 import 'package:provider/provider.dart';
 
-class DeletePostButton extends StatelessWidget {
+class EditButton extends StatelessWidget {
   final Post post;
-  const DeletePostButton({
-    Key? key,
-    required this.post,
-  }) : super(key: key);
+
+  const EditButton({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +17,16 @@ class DeletePostButton extends StatelessWidget {
     return controller.uid == post.uid
         ? IconButton(
             onPressed: () {
-              controller.deletePost(post);
-              Navigator.pop(context);
-              showSnackBar(context, 'post successfully deleted!');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => EditPostPage(post: post),
+                ),
+              );
             },
             icon: const Icon(
-              Icons.delete,
-              color: Colors.redAccent,
+              Icons.edit,
+              color: kPrimaryColor,
             ),
           )
         : const SizedBox();

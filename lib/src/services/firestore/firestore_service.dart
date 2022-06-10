@@ -69,7 +69,6 @@ class FirestoreService {
   }
 
   Future<String> addNewPost(
-    String uid,
     Map<String, dynamic> post,
     String postId,
   ) async {
@@ -77,6 +76,23 @@ class FirestoreService {
 
     try {
       _firestore.collection('posts').doc(postId).set(post);
+      status = 'success';
+    } catch (error) {
+      status = error.toString();
+    }
+    return status;
+  }
+
+  Future<String> editPost(
+    String postId,
+    String description,
+  ) async {
+    String status = '';
+
+    try {
+      _firestore.collection('posts').doc(postId).update({
+        'description': description,
+      });
       status = 'success';
     } catch (error) {
       status = error.toString();
@@ -242,7 +258,7 @@ class FirestoreService {
       await FirebaseFirestore.instance.collection('users').doc(uid).set(user);
       status = 'success';
     } catch (error) {
-      status = 'error';
+      status = error.toString();
     }
 
     return status;

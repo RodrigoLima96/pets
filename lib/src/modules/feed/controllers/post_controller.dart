@@ -11,30 +11,32 @@ enum PostState { idle, loading, success, error }
 class PostController extends ChangeNotifier {
   final FirestoreService _firestoreService;
   final FeedController _feedController;
-  var commentsState = PostState.idle;
+  var getCommentsState = PostState.idle;
   var postCommentState = PostState.idle;
+  var editPostState = PostState.idle;
   List<model.Comment> comments = [];
   String uid = '';
+  String? newDescription;
 
   PostController(this._firestoreService, this._feedController);
 
   getComments(String postId) async {
-    commentsState = PostState.loading;
+    getCommentsState = PostState.loading;
     notifyListeners();
 
     try {
       comments = await _firestoreService.getPostCommets(postId);
 
-      commentsState = PostState.success;
+      getCommentsState = PostState.success;
       final model.User user = await _firestoreService.getCurrentUserDetails();
       uid = user.uid;
       notifyListeners();
     } catch (error) {
-      commentsState = PostState.error;
+      getCommentsState = PostState.error;
       notifyListeners();
     }
 
-    commentsState = PostState.idle;
+    getCommentsState = PostState.idle;
     return comments;
   }
 
@@ -87,19 +89,38 @@ class PostController extends ChangeNotifier {
     }
   }
 
+  Future<String> editPost(String description, String postId) async {
+    editPostState = PostState.loading;
+    notifyListeners();
+    String status = 'error';
+
+    try {
+      status = await _firestoreService.editPost(postId, description);
+
+      newDescription = description;
+      editPostState = PostState.success;
+      notifyListeners();
+    } catch (error) {
+      editPostState = PostState.error;
+      notifyListeners();
+    }
+
+    return status;
+  }
+
   deletePost(
     Post post,
   ) async {
-    postCommentState = PostState.loading;
+    editPostState = PostState.loading;
     notifyListeners();
 
     try {
       await _firestoreService.deletePost(post.postId);
       _feedController.removePost(post);
-      postCommentState = PostState.success;
+      editPostState = PostState.success;
       notifyListeners();
     } catch (error) {
-      postCommentState = PostState.error;
+      editPostState = PostState.error;
       notifyListeners();
     }
   }

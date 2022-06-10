@@ -6,12 +6,14 @@ class InputDescription extends StatelessWidget {
   final TextEditingController descriptionController;
   final double padding;
   final Validator validator;
+  final bool autoFocus;
   const InputDescription({
     Key? key,
     required this.size,
     required this.descriptionController,
     required this.padding,
     required this.validator,
+    this.autoFocus = false,
   }) : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class InputDescription extends StatelessWidget {
       width: size.width,
       padding: EdgeInsets.only(top: padding),
       child: TextFormField(
+        autofocus: autoFocus,
         textAlign: TextAlign.center,
         controller: descriptionController,
         decoration: const InputDecoration(

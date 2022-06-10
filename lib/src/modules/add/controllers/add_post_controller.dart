@@ -47,8 +47,8 @@ class AddPostController extends ChangeNotifier {
       String postId = const Uuid().v1();
       final model.User user = await getUserDetails();
 
-      List<String> imagesUrl = await _storageService.uploadPostImagesToStorage(
-          images!, 'UuT6Re8vK5PoYL4zMDJoAfjqrAm2');
+      List<String> imagesUrl =
+          await _storageService.uploadPostImagesToStorage(images!, user.uid);
 
       Post post = Post(
         postId: postId,
@@ -62,9 +62,10 @@ class AddPostController extends ChangeNotifier {
         type: pets[0].type,
       );
 
-      await _firestoreService.addNewPost(user.uid, post.toMap(), postId);
+      await _firestoreService.addNewPost(post.toMap(), postId);
 
       _addController.selected = [];
+      clearImage();
       state = AddPostState.success;
       _feedController.getPosts(0);
       notifyListeners();

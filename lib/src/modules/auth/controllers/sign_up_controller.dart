@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/user.dart' as model;
 import 'package:pets/src/services/auth/auth_service.dart';
@@ -10,6 +9,7 @@ class SignUpController extends ChangeNotifier {
   final AuthService _authService;
   final FirestoreService _firestoreService;
   var state = SignUpState.idle;
+  String status = 'error';
 
   SignUpController(this._authService, this._firestoreService);
 
@@ -22,16 +22,16 @@ class SignUpController extends ChangeNotifier {
     notifyListeners();
 
     try {
-      UserCredential credential = await _authService.signUpUser(
+      var credential = await _authService.signUpUser(
           email: email, password: password, name: name);
-
+      status = _authService.status;
       model.User user = model.User(
         uid: credential.user!.uid,
         name: name,
         email: email,
       );
 
-      _firestoreService.signUpUser(user.uid, user.toMap());
+      await _firestoreService.signUpUser(user.uid, user.toMap());
       state = SignUpState.success;
       notifyListeners();
     } catch (error) {

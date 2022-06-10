@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String status = 'error';
 
   Future<String> loginUser({
     required String email,
@@ -32,9 +32,10 @@ class AuthService {
         email: email,
         password: password,
       );
+      status = 'success';
       return credential;
     } catch (error) {
-      debugPrint(error.toString());
+      status = error.toString();
     }
   }
 

@@ -55,7 +55,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => EditPetController(
                 context.read(), context.read(), context.read())),
-        Provider(create: (_) => LogoutController(context.read())),
+        ChangeNotifierProvider(
+            create: (context) => LogoutController(context.read())),
       ],
       child: MaterialApp.router(
         title: 'Pets App',

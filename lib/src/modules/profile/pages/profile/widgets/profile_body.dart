@@ -30,7 +30,6 @@ class _EditPetState extends State<EditPet> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final controller = context.watch<ProfileController>();
-    debugPrint('create');
     return SingleChildScrollView(
       child: Container(
         height: size.height,

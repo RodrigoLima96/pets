@@ -37,7 +37,7 @@ class _SignUpBodyState extends State<SignUpBody> {
 
     controller.addListener(() {
       if (controller.state == SignUpState.error) {
-        showSnackBar(context, controller.state);
+        showSnackBar(context, controller.status);
       } else if (controller.state == SignUpState.success) {
         context.goNamed(AppPage.home.toName);
       }

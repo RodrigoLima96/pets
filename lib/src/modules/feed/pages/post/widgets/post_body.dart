@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/feed/pages/post/widgets/comments/list_post_comments.dart';
+import 'package:pets/src/modules/feed/pages/post/widgets/description.dart';
 import 'package:pets/src/shared/widgets/pets_list.dart';
 import 'package:pets/src/shared/widgets/user_info.dart';
 import 'package:pets/src/models/post.dart';
-import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/list_images.dart';
 
 class PostBody extends StatelessWidget {
@@ -27,15 +27,7 @@ class PostBody extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             PetsList(size: size, pets: post.pets, imageRadius: 20),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                post.description,
-                style: textStyle,
-                textAlign: TextAlign.justify,
-              ),
-            ),
-            const Text('owner', style: textStyle),
+            Description(description: post.description),
             const SizedBox(height: 5),
             UserInfo(
               userPhoto: post.userPhotoUrl,

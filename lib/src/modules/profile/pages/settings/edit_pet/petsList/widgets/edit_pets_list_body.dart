@@ -13,35 +13,38 @@ class EditPetsListBody extends StatelessWidget {
     return SizedBox(
       height: size.height,
       width: double.infinity,
-      child: ListView.builder(
-          itemCount: pets.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EditPetPage(pet: pets[index])));
-                },
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: NetworkImage(
-                        pets[index].photoUrl,
-                      ),
+      child: pets.isEmpty
+          ? const Center(child: Text('No Pets Yet', style: textStyle))
+          : ListView.builder(
+              itemCount: pets.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  EditPetPage(pet: pets[index])));
+                    },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 40,
+                          backgroundImage: NetworkImage(
+                            pets[index].photoUrl,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(pets[index].petName, style: textStyle),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(pets[index].petName, style: textStyle),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }),
+                  ),
+                );
+              }),
     );
   }
 }
