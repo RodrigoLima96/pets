@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pets/src/models/post.dart' as model;
 import 'package:pets/src/modules/feed/pages/post/post_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
+import 'package:pets/src/shared/utils/methods.dart';
 import 'package:pets/src/shared/widgets/list_images.dart';
 import 'package:pets/src/modules/feed/pages/feed/widgets/post_card/pets_info.dart';
 
@@ -48,7 +49,7 @@ class _PostCardState extends State<PostCard> {
                 horizontal: 15,
               ),
               child: Text(
-                date.format(widget.post.datePublished),
+                dateFormat(widget.post.datePublished),
                 style: textStyle,
               ),
             ),

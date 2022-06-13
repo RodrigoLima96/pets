@@ -45,7 +45,7 @@ class EditPetController extends ChangeNotifier {
       if (image != null) {
         _storageService.deletePetPhoto('pets', uid, petId);
         photoUrl = await _storageService.uploadPetImageToStorage(
-            'pets', petId, image!);
+            'pets', petId, image!, uid);
 
         _firestoreService.updatePet(
             uid, petId, petName, petWeight, petAge, photoUrl);

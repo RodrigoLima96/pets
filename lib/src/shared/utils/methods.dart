@@ -1,11 +1,8 @@
 import 'dart:typed_data';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pets/src/models/user.dart' as model;
 import 'package:pets/src/shared/utils/constants.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 showSnackBar(BuildContext context, message) {
   ScaffoldMessenger.of(context).showSnackBar(
@@ -69,18 +66,6 @@ Widget loadingWidget() {
   return const Center(child: CircularProgressIndicator());
 }
 
-getUserUid() {
-  String uid = FirebaseAuth.instance.currentUser!.uid;
-  return uid;
-}
-
-Future<model.User> getUserDetails() async {
-  User currentUser = FirebaseAuth.instance.currentUser!;
-
-  DocumentSnapshot snap = await FirebaseFirestore.instance
-      .collection('users')
-      .doc(currentUser.uid)
-      .get();
-
-  return model.User.fromMap(snap);
+String dateFormat(DateTime date) {
+  return timeago.format(date);
 }

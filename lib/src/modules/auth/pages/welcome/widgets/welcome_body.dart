@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lottie/lottie.dart';
+import 'package:pets/src/modules/auth/pages/welcome/widgets/bottom_animation.dart';
 import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
@@ -18,13 +18,7 @@ class WelcomeBody extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Positioned(
-            bottom: -110,
-            child: Lottie.asset(
-              'assets/animations/login.json',
-              width: size.width * 0.8,
-            ),
-          ),
+          BottomAnimation(size: size),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

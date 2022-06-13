@@ -54,8 +54,15 @@ class _EditPetState extends State<EditPet> {
                     ],
                   ),
                   ListName(name: 'PETS', size: size),
-                  PetsList(
-                      size: size, pets: controller.petsList, imageRadius: 30),
+                  controller.petsList.isEmpty
+                      ? const Padding(
+                          padding: EdgeInsets.only(top: 20),
+                          child: Text('No Pets Yet'),
+                        )
+                      : PetsList(
+                          size: size,
+                          pets: controller.petsList,
+                          imageRadius: 30),
                 ],
               ),
       ),

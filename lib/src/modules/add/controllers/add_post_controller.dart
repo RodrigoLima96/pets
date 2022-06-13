@@ -5,6 +5,7 @@ import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
 import 'package:pets/src/models/pet.dart';
 import 'package:pets/src/models/post.dart';
 import 'package:pets/src/models/user.dart' as model;
+import 'package:pets/src/services/auth/auth_service.dart';
 import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:pets/src/services/storage/storage_service.dart';
 import 'package:pets/src/shared/utils/methods.dart';
@@ -14,6 +15,7 @@ enum AddPostState { idle, loading, success, error }
 
 class AddPostController extends ChangeNotifier {
   final FirestoreService _firestoreService;
+  final AuthService _authService;
   final StorageService _storageService;
   final AddController _addController;
   final FeedController _feedController;
@@ -25,6 +27,7 @@ class AddPostController extends ChangeNotifier {
     this._storageService,
     this._addController,
     this._feedController,
+    this._authService,
   );
 
   addImage() async {
@@ -45,7 +48,8 @@ class AddPostController extends ChangeNotifier {
     notifyListeners();
     try {
       String postId = const Uuid().v1();
-      final model.User user = await getUserDetails();
+      final model.User user = await _firestoreService
+          .getCurrentUserDetails(_authService.getCurrentUserUid());
 
       List<String> imagesUrl =
           await _storageService.uploadPostImagesToStorage(images!, user.uid);

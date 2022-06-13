@@ -61,7 +61,7 @@ class _EditPostBodyState extends State<EditPostBody> {
             EditPostButton(
               size: size,
               formKey: _formKey,
-              postId: widget.post.postId,
+              post: widget.post,
               description: _descriptionController,
             ),
           ],

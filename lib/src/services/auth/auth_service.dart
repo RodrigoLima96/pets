@@ -42,4 +42,9 @@ class AuthService {
   logout() async {
     _auth.signOut();
   }
+
+  getCurrentUserUid() {
+    String uid = _auth.currentUser!.uid;
+    return uid;
+  }
 }

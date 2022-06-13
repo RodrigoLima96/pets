@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/comment.dart';
 import 'package:pets/src/modules/feed/pages/post/widgets/comments/delete_comment_button.dart';
-import 'package:pets/src/shared/utils/constants.dart';
+import 'package:pets/src/shared/utils/methods.dart';
 
 class CommentCard extends StatelessWidget {
   final Comment comment;
@@ -43,7 +43,7 @@ class CommentCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        date.format(comment.datePublished),
+                        dateFormat(comment.datePublished),
                         style: const TextStyle(
                           fontSize: 10,
                           color: Colors.grey,

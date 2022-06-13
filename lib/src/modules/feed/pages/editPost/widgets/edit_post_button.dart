@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pets/src/models/post.dart';
 import 'package:pets/src/modules/feed/controllers/post_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/utils/methods.dart';
@@ -8,14 +9,14 @@ import 'package:provider/provider.dart';
 class EditPostButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final Size size;
-  final String postId;
+  final Post post;
   final TextEditingController description;
 
   const EditPostButton({
     Key? key,
     required this.size,
     required this.formKey,
-    required this.postId,
+    required this.post,
     required this.description,
   }) : super(key: key);
 
@@ -30,8 +31,9 @@ class EditPostButton extends StatelessWidget {
             press: () async {
               if (formKey.currentState!.validate()) {
                 String status =
-                    await controller.editPost(description.text, postId);
+                    await controller.editPost(description.text, post);
                 await showSnackBar(context, status);
+                Navigator.pop(context);
                 Navigator.pop(context);
               }
             },

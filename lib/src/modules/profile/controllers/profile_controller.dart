@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:pets/src/models/pet.dart';
 import 'package:pets/src/models/user.dart' as model;
-import 'package:pets/src/shared/utils/methods.dart';
 
 enum ProfileState { idle, loading, success, error }
 
@@ -18,7 +17,7 @@ class ProfileController extends ChangeNotifier {
     state = ProfileState.loading;
     try {
       petsList = await _firestoreService.getPets(uid, 'pets');
-      user = await getUserDetails();
+      user = await _firestoreService.getCurrentUserDetails(uid);
       sitterList = await _firestoreService.getPets(uid, 'sitter');
       state = ProfileState.success;
       notifyListeners();

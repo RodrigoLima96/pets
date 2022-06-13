@@ -1,6 +1,6 @@
 import 'dart:typed_data';
+
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:pets/src/shared/utils/methods.dart';
 import 'package:uuid/uuid.dart';
 
 class StorageService {
@@ -11,8 +11,8 @@ class StorageService {
     String childName,
     String petId,
     Uint8List file,
+    String uid,
   ) async {
-    final String uid = getUserUid();
     Reference ref = _storage.ref().child(childName).child(uid).child(petId);
 
     UploadTask uploadTask = ref.putData(file);

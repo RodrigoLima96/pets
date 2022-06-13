@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/comment.dart';
 import 'package:pets/src/models/pet.dart';
@@ -240,13 +239,9 @@ class FirestoreService {
     return status;
   }
 
-  Future<model.User> getCurrentUserDetails() async {
-    User currentUser = FirebaseAuth.instance.currentUser!;
-
-    DocumentSnapshot snap = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentUser.uid)
-        .get();
+  Future<model.User> getCurrentUserDetails(String uid) async {
+    DocumentSnapshot snap =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
 
     return model.User.fromMap(snap);
   }

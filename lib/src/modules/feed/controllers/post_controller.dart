@@ -3,6 +3,7 @@ import 'package:pets/src/models/comment.dart' as model;
 import 'package:pets/src/models/post.dart';
 import 'package:pets/src/models/user.dart' as model;
 import 'package:pets/src/modules/feed/controllers/feed_controller.dart';
+import 'package:pets/src/services/auth/auth_service.dart';
 import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:uuid/uuid.dart';
 
@@ -10,15 +11,16 @@ enum PostState { idle, loading, success, error }
 
 class PostController extends ChangeNotifier {
   final FirestoreService _firestoreService;
+  final AuthService _authService;
   final FeedController _feedController;
   var getCommentsState = PostState.idle;
   var postCommentState = PostState.idle;
   var editPostState = PostState.idle;
   List<model.Comment> comments = [];
   String uid = '';
-  String? newDescription;
 
-  PostController(this._firestoreService, this._feedController);
+  PostController(
+      this._firestoreService, this._feedController, this._authService);
 
   getComments(String postId) async {
     getCommentsState = PostState.loading;
@@ -28,8 +30,7 @@ class PostController extends ChangeNotifier {
       comments = await _firestoreService.getPostCommets(postId);
 
       getCommentsState = PostState.success;
-      final model.User user = await _firestoreService.getCurrentUserDetails();
-      uid = user.uid;
+      uid = _authService.getCurrentUserUid();
       notifyListeners();
     } catch (error) {
       getCommentsState = PostState.error;
@@ -48,7 +49,8 @@ class PostController extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final model.User user = await _firestoreService.getCurrentUserDetails();
+      final model.User user = await _firestoreService
+          .getCurrentUserDetails(_authService.getCurrentUserUid());
       String commentId = const Uuid().v1();
 
       model.Comment comment = model.Comment(
@@ -89,16 +91,28 @@ class PostController extends ChangeNotifier {
     }
   }
 
-  Future<String> editPost(String description, String postId) async {
+  Future<String> editPost(String description, Post post) async {
     editPostState = PostState.loading;
     notifyListeners();
     String status = 'error';
 
     try {
-      status = await _firestoreService.editPost(postId, description);
+      status = await _firestoreService.editPost(post.postId, description);
 
-      newDescription = description;
+      Post newPost = Post(
+        postId: post.postId,
+        uid: uid,
+        pets: post.pets,
+        description: description,
+        datePublished: post.datePublished,
+        username: post.username,
+        userPhotoUrl: post.userPhotoUrl,
+        petsPhotosUrl: post.petsPhotosUrl,
+        type: post.type,
+      );
+      _feedController.updatePost(newPost, uid);
       editPostState = PostState.success;
+
       notifyListeners();
     } catch (error) {
       editPostState = PostState.error;

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pets/src/modules/add/controllers/add_controller.dart';
+import 'package:pets/src/services/auth/auth_service.dart';
 import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:pets/src/services/storage/storage_service.dart';
 import 'package:pets/src/models/pet.dart';
@@ -14,10 +15,15 @@ class AddPetController extends ChangeNotifier {
   final FirestoreService _firestoreService;
   final AddController _addController;
   final StorageService _storageService;
+  final AuthService _authService;
   var state = AddPetState.idle;
 
   AddPetController(
-      this._firestoreService, this._addController, this._storageService);
+    this._firestoreService,
+    this._addController,
+    this._storageService,
+    this._authService,
+  );
 
   addImage() async {
     image = await pickImage(multImages: false);
@@ -42,9 +48,9 @@ class AddPetController extends ChangeNotifier {
     try {
       String petId = const Uuid().v1();
 
-      final String uid = getUserUid();
-      String photoUrl =
-          await _storageService.uploadPetImageToStorage('pets', petId, file);
+      final String uid = _authService.getCurrentUserUid();
+      String photoUrl = await _storageService.uploadPetImageToStorage(
+          'pets', petId, file, uid);
 
       Pet pet = Pet(
         petName: name,
