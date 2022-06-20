@@ -37,9 +37,4 @@ class FeedController extends ChangeNotifier {
     posts.remove(post);
     notifyListeners();
   }
-
-  updatePost(model.Post post, String uid) {
-    posts[posts.indexWhere((post) => post.uid == uid)] = post;
-    notifyListeners();
-  }
 }

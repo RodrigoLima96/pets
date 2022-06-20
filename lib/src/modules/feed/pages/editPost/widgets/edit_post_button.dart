@@ -34,7 +34,6 @@ class EditPostButton extends StatelessWidget {
                     await controller.editPost(description.text, post);
                 await showSnackBar(context, status);
                 Navigator.pop(context);
-                Navigator.pop(context);
               }
             },
             color: kPrimaryColor,

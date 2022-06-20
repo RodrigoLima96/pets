@@ -98,21 +98,8 @@ class PostController extends ChangeNotifier {
 
     try {
       status = await _firestoreService.editPost(post.postId, description);
-
-      Post newPost = Post(
-        postId: post.postId,
-        uid: uid,
-        pets: post.pets,
-        description: description,
-        datePublished: post.datePublished,
-        username: post.username,
-        userPhotoUrl: post.userPhotoUrl,
-        petsPhotosUrl: post.petsPhotosUrl,
-        type: post.type,
-      );
-      _feedController.updatePost(newPost, uid);
+      
       editPostState = PostState.success;
-
       notifyListeners();
     } catch (error) {
       editPostState = PostState.error;
