@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pets/src/models/post.dart';
 import 'package:pets/src/services/auth/auth_service.dart';
 import 'package:pets/src/services/firestore/firestore_service.dart';
 import 'package:pets/src/models/pet.dart';
@@ -8,7 +9,8 @@ enum ProfileState { idle, loading, success, error }
 
 class ProfileController extends ChangeNotifier {
   late model.User user;
-  List<Pet> petsList = [], sitterList = [];
+  List<Pet> petsList = [];
+  List<Post> userPosts = [];
   final FirestoreService _firestoreService;
   final AuthService _authService;
   var state = ProfileState.idle;
@@ -20,9 +22,9 @@ class ProfileController extends ChangeNotifier {
     state = ProfileState.loading;
     try {
       userUid = _authService.getCurrentUserUid();
-      petsList = await _firestoreService.getPets(uid, 'pets');
+      petsList = await _firestoreService.getPets(uid);
       user = await _firestoreService.getCurrentUserDetails(uid);
-      sitterList = await _firestoreService.getPets(uid, 'sitter');
+      userPosts = await _firestoreService.getPosts('all', uid);
       state = ProfileState.success;
       notifyListeners();
     } catch (error) {

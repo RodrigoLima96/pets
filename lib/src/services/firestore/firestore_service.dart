@@ -8,12 +8,17 @@ import 'package:pets/src/models/user.dart' as model;
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<List<Post>> getPosts(String type) async {
+  Future<List<Post>> getPosts(String type, String? uid) async {
     QuerySnapshot snap;
     List<Post> posts = [];
     try {
-      if (type == 'all') {
+      if (type == 'all' && uid == null) {
         snap = await _firestore.collection('posts').get();
+      } else if (uid != null) {
+        snap = await _firestore
+            .collection('posts')
+            .where('uid', isEqualTo: uid)
+            .get();
       } else {
         snap = await _firestore
             .collection('posts')
@@ -154,14 +159,14 @@ class FirestoreService {
     return status;
   }
 
-  Future<List<Pet>> getPets(String uid, String collectionName) async {
+  Future<List<Pet>> getPets(String uid) async {
     QuerySnapshot snap;
     List<Pet> pets = [];
     try {
       snap = await _firestore
           .collection('users')
           .doc(uid)
-          .collection(collectionName)
+          .collection('pets')
           .get();
       for (var pet in snap.docs) {
         pets.add(Pet.fromFirestore(pet));

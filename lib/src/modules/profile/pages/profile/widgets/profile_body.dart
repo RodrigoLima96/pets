@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/modules/profile/controllers/profile_controller.dart';
 import 'package:pets/src/modules/profile/pages/profile/widgets/list_name.dart';
+import 'package:pets/src/modules/profile/pages/profile/widgets/user_posts.dart';
 import 'package:pets/src/shared/widgets/pets_list.dart';
 import 'package:pets/src/modules/profile/pages/profile/widgets/profile_user_info.dart';
 import 'package:pets/src/modules/profile/pages/profile/widgets/settings.dart';
@@ -64,6 +65,8 @@ class _EditPetState extends State<EditPet> {
                           size: size,
                           pets: controller.petsList,
                           imageRadius: 30),
+                  SizedBox(height: size.height * 0.1),
+                  UserPosts(posts: controller.userPosts),
                 ],
               ),
       ),

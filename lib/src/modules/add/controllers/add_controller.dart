@@ -22,7 +22,7 @@ class AddController extends ChangeNotifier {
     final String uid = _authService.getCurrentUserUid();
 
     try {
-      pets = await _firestoreService.getPets(uid, 'pets');
+      pets = await _firestoreService.getPets(uid);
       state = AddState.success;
       notifyListeners();
     } catch (error) {

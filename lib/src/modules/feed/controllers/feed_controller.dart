@@ -20,7 +20,7 @@ class FeedController extends ChangeNotifier {
     String type = petType[index];
 
     try {
-      posts = await _firestoreService.getPosts(type);
+      posts = await _firestoreService.getPosts(type, null);
 
       state = FeedState.success;
       notifyListeners();
