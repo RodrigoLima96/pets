@@ -10,6 +10,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kBlack,
+      ),
       backgroundColor: kBlack,
       body: EditPet(uid: uid),
     );

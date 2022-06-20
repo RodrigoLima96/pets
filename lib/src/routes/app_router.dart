@@ -5,7 +5,6 @@ import 'package:pets/src/modules/auth/pages/login/login_page.dart';
 import 'package:pets/src/modules/auth/pages/signup/sign_up_page.dart';
 import 'package:pets/src/modules/auth/pages/welcome/welcome_page.dart';
 import 'package:pets/src/modules/home/pages/home/home_page.dart';
-import 'package:pets/src/modules/profile/pages/pet/pet_page.dart';
 import 'package:pets/src/routes/router_utils.dart';
 
 class AppRouter {
@@ -19,8 +18,7 @@ class AppRouter {
       GoRoute(
         path: AppPage.home.toPath,
         name: AppPage.home.toName,
-        // builder: (context, state) => const HomePage(index: 1),
-        builder: (context, state) => const PetPage(),
+        builder: (context, state) => const HomePage(index: 1),
       ),
       GoRoute(
         path: AppPage.welcome.toPath,

@@ -53,7 +53,8 @@ class MyApp extends StatelessWidget {
                   context.read(),
                 )),
         ChangeNotifierProvider(
-            create: (context) => ProfileController(context.read())),
+            create: (context) =>
+                ProfileController(context.read(), context.read())),
         ChangeNotifierProvider(
             create: (context) => EditUserController(
                 context.read(), context.read(), context.read())),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/src/models/pet.dart';
+import 'package:pets/src/modules/profile/pages/pet/pet_page.dart';
 import 'package:pets/src/shared/widgets/user_pets_avatar.dart';
 
 class PetsList extends StatelessWidget {
@@ -25,10 +26,18 @@ class PetsList extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: pets.length,
           itemBuilder: (context, index) {
-            return UserPetsAvatar(
-              petPhoto: pets[index].photoUrl,
-              petName: pets[index].petName,
-              imageRadius: imageRadius,
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PetPage(pet: pets[index])));
+              },
+              child: UserPetsAvatar(
+                petPhoto: pets[index].photoUrl,
+                petName: pets[index].petName,
+                imageRadius: imageRadius,
+              ),
             );
           },
         ),

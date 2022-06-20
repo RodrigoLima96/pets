@@ -31,21 +31,22 @@ class _EditPetState extends State<EditPet> {
     Size size = MediaQuery.of(context).size;
     final controller = context.watch<ProfileController>();
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: size.height,
         width: double.infinity,
-        padding: EdgeInsets.only(top: size.height * 0.05),
         child: controller.state == ProfileState.loading
             ? loadingWidget()
             : Column(
                 children: [
                   Stack(
                     children: [
-                      Settings(
-                        notifications: 3,
-                        user: controller.user,
-                        pets: controller.petsList,
-                      ),
+                      controller.userUid == widget.uid
+                          ? Settings(
+                              notifications: 3,
+                              user: controller.user,
+                              pets: controller.petsList,
+                            )
+                          : const SizedBox(),
                       Center(
                           child: Padding(
                         padding: const EdgeInsets.only(top: 50),
