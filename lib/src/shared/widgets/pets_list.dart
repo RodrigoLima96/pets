@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/pet.dart';
-import 'package:pets/src/modules/profile/pages/pet/pet_page.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/widgets/user_pets_avatar.dart';
 
 class PetsList extends StatelessWidget {
@@ -27,12 +28,7 @@ class PetsList extends StatelessWidget {
           itemCount: pets.length,
           itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PetPage(pet: pets[index])));
-              },
+              onTap: () => context.push(AppPage.pet.toPath, extra: pets[index]),
               child: UserPetsAvatar(
                 petPhoto: pets[index].photoUrl,
                 petName: pets[index].petName,

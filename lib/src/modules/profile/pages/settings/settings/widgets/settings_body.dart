@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/pet.dart';
-import 'package:pets/src/modules/profile/pages/settings/edit_pet/petsList/edit_pets_list_page.dart';
-import 'package:pets/src/modules/profile/pages/settings/edit_profile/edit_profile_page.dart';
 import 'package:pets/src/models/user.dart' as model;
 import 'package:pets/src/modules/profile/pages/settings/settings/widgets/logout_button.dart';
 import 'package:pets/src/modules/profile/pages/settings/settings/widgets/setting_option.dart';
+import 'package:pets/src/routes/router_utils.dart';
 
 class SettingsBody extends StatelessWidget {
   final model.User user;
@@ -26,23 +26,15 @@ class SettingsBody extends StatelessWidget {
             size: size,
             text: 'Edit Profile',
             icon: 'assets/icons/person.svg',
-            function: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => EditProfilePage(user: user)));
-            },
+            function: () =>
+                context.push(AppPage.editProfile.toPath, extra: user),
           ),
           SettingOption(
             size: size,
             text: 'Edit Pets',
             icon: 'assets/icons/pet.svg',
-            function: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => EditPetsListPage(pets: pets)));
-            },
+            function: () =>
+                context.push(AppPage.editPetList.toPath, extra: pets),
           ),
           LogoutButton(size: size),
         ],

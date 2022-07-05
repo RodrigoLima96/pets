@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/post.dart' as model;
-import 'package:pets/src/modules/feed/pages/post/post_page.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:pets/src/shared/widgets/list_images.dart';
@@ -35,12 +36,8 @@ class _PostCardState extends State<PostCard> {
                 listLength: widget.post.petsPhotosUrl.length,
                 size: widget.size,
               ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PostPage(post: widget.post)));
-              },
+              onTap: () =>
+                  context.push(AppPage.post.toPath, extra: widget.post),
             ),
             Container(
               width: widget.size.width,

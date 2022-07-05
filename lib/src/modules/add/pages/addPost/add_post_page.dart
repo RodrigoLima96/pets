@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/pet.dart';
 import 'package:pets/src/modules/add/controllers/add_post_controller.dart';
 import 'package:pets/src/modules/add/pages/addPost/widgets/add_post_body.dart';
@@ -19,7 +20,7 @@ class AddPostPage extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             controller.clearImage();
-            Navigator.pop(context);
+            context.pop();
           },
           icon: const Icon(Icons.arrow_back),
         ),

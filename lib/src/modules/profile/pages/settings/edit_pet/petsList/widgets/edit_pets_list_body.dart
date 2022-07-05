@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/pet.dart';
-import 'package:pets/src/modules/profile/pages/settings/edit_pet/edit_pet/edit_pet_page.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 
 class EditPetsListBody extends StatelessWidget {
@@ -21,13 +22,8 @@ class EditPetsListBody extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(top: 50),
                   child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  EditPetPage(pet: pets[index])));
-                    },
+                    onTap: () => context.push(AppPage.editPet.toPath,
+                        extra: pets[index]),
                     child: Column(
                       children: [
                         CircleAvatar(

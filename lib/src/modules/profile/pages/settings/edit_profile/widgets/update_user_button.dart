@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/profile/controllers/edit_user_controller.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
@@ -35,8 +37,7 @@ class UpdateUserButton extends StatelessWidget {
                   controller.addListener(() {
                     if (controller.state == EditUserState.success) {
                       showSnackBar(context, 'update success');
-                      Navigator.pop(context);
-                      Navigator.pop(context);
+                      context.goNamed(AppPage.home.toName);
                     }
                   });
                 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/post.dart';
 import 'package:pets/src/modules/feed/controllers/post_controller.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:provider/provider.dart';
 
@@ -25,8 +27,7 @@ class _DeletePostButtonState extends State<DeletePostButton> {
             onPressed: () {
               confirmDialog(context, () {
                 controller.deletePost(widget.post);
-                Navigator.pop(context);
-                Navigator.pop(context);
+                context.goNamed(AppPage.home.name);
                 showSnackBar(context, 'post successfully deleted!');
               });
             },

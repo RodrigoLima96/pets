@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/post.dart';
 import 'package:pets/src/modules/feed/controllers/post_controller.dart';
-import 'package:pets/src/modules/feed/pages/editPost/edit_post_page.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -16,14 +17,7 @@ class EditButton extends StatelessWidget {
 
     return controller.uid == post.uid
         ? IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => EditPostPage(post: post),
-                ),
-              );
-            },
+            onPressed: () => context.push(AppPage.editPost.toPath, extra: post),
             icon: const Icon(
               Icons.edit,
               color: kPrimaryColor,

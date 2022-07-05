@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/post.dart';
-import 'package:pets/src/modules/feed/pages/post/post_page.dart';
+import 'package:pets/src/routes/router_utils.dart';
 
 class UserPosts extends StatelessWidget {
   final List<Post> posts;
@@ -25,12 +26,8 @@ class UserPosts extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PostPage(post: posts[index])));
-                },
+                onTap: () =>
+                    context.push(AppPage.post.toPath, extra: posts[index]),
                 child: Image.network(
                   posts[index].petsPhotosUrl[0],
                   fit: BoxFit.cover,

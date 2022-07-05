@@ -43,7 +43,6 @@ class _EditPetState extends State<EditPet> {
                     children: [
                       controller.userUid == widget.uid
                           ? Settings(
-                              notifications: 3,
                               user: controller.user,
                               pets: controller.petsList,
                             )

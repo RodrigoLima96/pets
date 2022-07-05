@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/profile/controllers/edit_pet_controller.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
@@ -38,15 +40,15 @@ class UpdatePetButton extends StatelessWidget {
                 if (formKey.currentState!.validate()) {
                   controller.updatePet(uid, petId, petName.text,
                       double.parse(petWeight.text), int.parse(petAge.text));
-                  controller.addListener(() {
-                    if (controller.state == EditPetState.success) {
-                      showSnackBar(context, 'update success');
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      controller.clearImage();
-                    }
-                  });
+                  controller.addListener(
+                    () {
+                      if (controller.state == EditPetState.success) {
+                        showSnackBar(context, 'update success');
+                        controller.clearImage();
+                        context.goNamed(AppPage.home.toName);
+                      }
+                    },
+                  );
                 }
               },
               color: kPrimaryColor,

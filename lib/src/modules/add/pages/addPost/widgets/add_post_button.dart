@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/pet.dart';
 import 'package:pets/src/modules/add/controllers/add_post_controller.dart';
-import 'package:pets/src/modules/home/pages/home/home_page.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/widgets/rounded_button.dart';
 import 'package:provider/provider.dart';
@@ -47,10 +47,7 @@ class AddPostButton extends StatelessWidget {
                     message: "post successfully added!",
                   ),
                 );
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => const HomePage(index: 1)));
+                context.pop();
               }
             },
             color: kPrimaryColor,

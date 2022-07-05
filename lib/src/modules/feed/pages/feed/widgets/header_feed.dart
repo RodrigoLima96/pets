@@ -16,7 +16,7 @@ class HeaderFeed extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Hi! Rodrigo',
+                'Hi! Olivia',
                 style: TextStyle(
                   color: kWhite,
                   fontSize: 20,

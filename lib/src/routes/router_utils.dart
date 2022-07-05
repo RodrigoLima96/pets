@@ -4,6 +4,15 @@ enum AppPage {
   singUp,
   home,
   addPet,
+  user,
+  pet,
+  addPost,
+  editPost,
+  post,
+  settings,
+  editProfile,
+  editPetList,
+  editPet,
 }
 
 extension AppPageExtension on AppPage {
@@ -19,6 +28,24 @@ extension AppPageExtension on AppPage {
         return "/singUp";
       case AppPage.addPet:
         return "/addPet";
+      case AppPage.user:
+        return "/user/:userId";
+      case AppPage.pet:
+        return "/pet";
+      case AppPage.addPost:
+        return "/addPost";
+      case AppPage.editPost:
+        return "/editPost";
+      case AppPage.post:
+        return "/post";
+      case AppPage.settings:
+        return "/settings";
+      case AppPage.editProfile:
+        return "/editProfile";
+      case AppPage.editPetList:
+        return "/editPetList";
+      case AppPage.editPet:
+        return "/editPet";
       default:
         return "/";
     }
@@ -36,6 +63,24 @@ extension AppPageExtension on AppPage {
         return "signUp";
       case AppPage.addPet:
         return "addPet";
+      case AppPage.user:
+        return "user";
+      case AppPage.pet:
+        return "pet";
+      case AppPage.addPost:
+        return "addPost";
+      case AppPage.editPost:
+        return "editPost";
+      case AppPage.post:
+        return "post";
+      case AppPage.settings:
+        return "settings";
+      case AppPage.editProfile:
+        return "editProfile";
+      case AppPage.editPetList:
+        return "editPetList";
+      case AppPage.editPet:
+        return "editPet";
       default:
         return "home";
     }

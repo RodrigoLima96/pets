@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/add/controllers/add_controller.dart';
-import 'package:pets/src/modules/add/pages/addPost/add_post_page.dart';
+import 'package:pets/src/routes/router_utils.dart';
 import 'package:pets/src/shared/utils/constants.dart';
 import 'package:pets/src/shared/utils/methods.dart';
 import 'package:provider/provider.dart';
@@ -35,14 +36,8 @@ class _HeaderPostState extends State<HeaderPost> {
           TextButton(
             onPressed: () {
               if (controller.selected.isNotEmpty) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => AddPostPage(
-                      pets: controller.selected,
-                    ),
-                  ),
-                );
+                context.push(AppPage.addPost.toPath,
+                    extra: controller.selected);
               } else {
                 showSnackBar(context, 'Select a pet');
               }

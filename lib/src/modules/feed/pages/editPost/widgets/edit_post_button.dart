@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/models/post.dart';
 import 'package:pets/src/modules/feed/controllers/post_controller.dart';
 import 'package:pets/src/shared/utils/constants.dart';
@@ -33,7 +34,7 @@ class EditPostButton extends StatelessWidget {
                 String status =
                     await controller.editPost(description.text, post);
                 await showSnackBar(context, status);
-                Navigator.pop(context);
+                context.pop();
               }
             },
             color: kPrimaryColor,

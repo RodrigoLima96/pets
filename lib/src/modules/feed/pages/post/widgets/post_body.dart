@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets/src/modules/feed/pages/post/widgets/comments/list_post_comments.dart';
 import 'package:pets/src/modules/feed/pages/post/widgets/description.dart';
-import 'package:pets/src/modules/profile/pages/profile/profile_page.dart';
 import 'package:pets/src/shared/widgets/pets_list.dart';
 import 'package:pets/src/shared/widgets/user_info.dart';
 import 'package:pets/src/models/post.dart';
@@ -31,14 +31,7 @@ class PostBody extends StatelessWidget {
             Description(description: post.description),
             const SizedBox(height: 5),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProfilePage(uid: post.uid),
-                  ),
-                );
-              },
+              onTap: () => context.push('/user/${post.uid}'),
               child: UserInfo(
                 userPhoto: post.userPhotoUrl,
                 username: post.username,
