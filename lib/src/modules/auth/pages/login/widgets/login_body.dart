@@ -81,7 +81,7 @@ class _LoginBodyState extends State<LoginBody> {
                 controller: _passwordController,
                 confirmPassword: false,
                 validator: (value) {
-                  return _validadorController.passwordValidator(value!);
+                  return _validadorController.loginPasswordValidator(value!);
                 },
               ),
               SizedBox(height: size.height * 0.01),

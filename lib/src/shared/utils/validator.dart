@@ -15,19 +15,19 @@ class Validator {
     return null;
   }
 
-  String? passwordValidator(String value) {
+  String? loginPasswordValidator(String value) {
     if (value.isEmpty) {
-      return 'Enter Your Password ';
+      return 'Enter Your Password';
     }
     return null;
   }
 
-  String? signUpPasswordValidator(String value, String text) {
-    if (value.isEmpty) {
+  String? signUpPasswordValidator(String password1, String password2) {
+    if (password1.isEmpty) {
       return 'Password is required!';
-    } else if (value != text) {
+    } else if (password1 != password2) {
       return 'passwords don\'t match';
-    } else if (value.length < 6 || value.length > 32) {
+    } else if (password1.length < 6 || password1.length > 32) {
       return 'Password must be 6-32 characters';
     }
     return null;
@@ -58,7 +58,7 @@ class Validator {
     if (value.isEmpty) {
       return 'Enter Your Pet Weight';
     } else if (value.contains(RegExp(r'[A-Z]'))) {
-      return 'Only digits accepted';
+      return 'Only Digits Accepted';
     }
     return null;
   }
@@ -67,39 +67,21 @@ class Validator {
     if (value.isEmpty) {
       return 'Enter Your Pet Age';
     } else if (value.contains(RegExp(r'[A-Z]'))) {
-      return 'Only digits accepted';
-    }
-    return null;
-  }
-
-  String? priceValidator(String value) {
-    if (value.isEmpty) {
-      return 'Enter the price!';
-    } else if (value.contains(RegExp(r'[A-Z]'))) {
-      return 'Only digits accepted';
-    }
-    return null;
-  }
-
-  String? daysValidator(String value) {
-    if (value.isEmpty) {
-      return 'Enter the days!';
-    } else if (value.contains(RegExp(r'[A-Z]'))) {
-      return 'Only digits accepted';
+      return 'Only Digits Accepted';
     }
     return null;
   }
 
   String? descriptionValidator(String value) {
     if (value.isEmpty) {
-      return 'Enter a description';
+      return 'Enter a Description';
     }
     return null;
   }
 
   String? commentValidator(String value) {
     if (value.isEmpty) {
-      return 'Enter your comment';
+      return 'Enter Your Comment';
     }
     return null;
   }
