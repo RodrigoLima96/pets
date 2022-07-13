@@ -41,20 +41,22 @@
 
 ## App Demo
  <p align="center">
-     LOGIN / SIGN UP
+     LOGIN / SIGN UP / PROFILE
   </p>
 
 
 <p align="center">
- <img align="center" src="README_FILES/gifs/login.gif" height="450">
+ <img align="center" src="README_FILES/gifs/login.gif" height="500">
  &nbsp &nbsp &nbsp
-<img align="center" src="README_FILES/gifs/sign-up.gif" height="450">
+<img align="center" src="README_FILES/gifs/sign-up.gif" height="500">
+ &nbsp &nbsp &nbsp
+<img align="center" src="README_FILES/gifs/profile.gif" height="500">
 </p>
 
 
 
  <p align="center">
-     ADD PET / ADD POST / ADD COMMENT / PROFILE
+     ADD PET / ADD POST / ADD COMMENT
   </p>
 
 <p align="center">
@@ -63,8 +65,6 @@
 <img align="center" src="README_FILES/gifs/add-post.gif" height="500">
  &nbsp &nbsp &nbsp
 <img align="center" src="README_FILES/gifs/add-comment.gif" height="500">
- &nbsp &nbsp &nbsp
-<img align="center" src="README_FILES/gifs/profile.gif" height="450">
 </p>
 
 
