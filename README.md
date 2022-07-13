@@ -41,16 +41,31 @@
 
 ## App Demo
  <p align="center">
-     AUTH
+     LOGIN / SIGN UP
   </p>
 
 
 <p align="center">
- <img align="center" src="README_FILES/gifs/login.gif" height="500">
+ <img align="center" src="README_FILES/gifs/login.gif" height="450">
  &nbsp &nbsp &nbsp
-<img align="center" src="README_FILES/gifs/sign-up.gif" height="500">
+<img align="center" src="README_FILES/gifs/sign-up.gif" height="450">
 </p>
 
+
+
+ <p align="center">
+     ADD PET / ADD POST / ADD COMMENT / PROFILE
+  </p>
+
+<p align="center">
+ <img align="center" src="README_FILES/gifs/add-pet.gif" height="450">
+ &nbsp &nbsp &nbsp
+<img align="center" src="README_FILES/gifs/add-post.gif" height="450">
+ &nbsp &nbsp &nbsp
+<img align="center" src="README_FILES/gifs/add-comment.gif" height="450">
+ &nbsp &nbsp &nbsp
+<img align="center" src="README_FILES/gifs/profile.gif" height="450">
+</p>
 
 
   
