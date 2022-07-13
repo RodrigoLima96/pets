@@ -58,11 +58,11 @@
   </p>
 
 <p align="center">
- <img align="center" src="README_FILES/gifs/add-pet.gif" height="450">
+ <img align="center" src="README_FILES/gifs/add-pet.gif" height="500">
  &nbsp &nbsp &nbsp
-<img align="center" src="README_FILES/gifs/add-post.gif" height="450">
+<img align="center" src="README_FILES/gifs/add-post.gif" height="500">
  &nbsp &nbsp &nbsp
-<img align="center" src="README_FILES/gifs/add-comment.gif" height="450">
+<img align="center" src="README_FILES/gifs/add-comment.gif" height="500">
  &nbsp &nbsp &nbsp
 <img align="center" src="README_FILES/gifs/profile.gif" height="450">
 </p>
