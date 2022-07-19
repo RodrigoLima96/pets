@@ -245,8 +245,7 @@ class FirestoreService {
   }
 
   Future<model.User> getCurrentUserDetails(String uid) async {
-    DocumentSnapshot snap =
-        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    DocumentSnapshot snap = await _firestore.collection('users').doc(uid).get();
 
     return model.User.fromMap(snap);
   }
@@ -255,7 +254,7 @@ class FirestoreService {
     String status = '';
 
     try {
-      await FirebaseFirestore.instance.collection('users').doc(uid).set(user);
+      await _firestore.collection('users').doc(uid).set(user);
       status = 'success';
     } catch (error) {
       status = error.toString();
