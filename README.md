@@ -16,6 +16,7 @@
 * View / Edit Profile
 * View Other User's Profile
 * Filter Posts
+* Logout
 
 ## Dependencies
 <details>
